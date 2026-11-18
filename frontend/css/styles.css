@@ -1,0 +1,142 @@
+/* FloraGuard AI — Custom styles, animations, and AgTech visual polish */
+
+:root {
+  --emerald-primary: #059669;
+  --emerald-dark: #047857;
+  --emerald-light: #ecfdf5;
+  --surface-bg: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top right, #ecfdf5 0%, #f8fafc 45%, #ffffff 100%);
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* Smooth page transitions */
+.page-section {
+  display: none;
+  animation: fadeSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-section.active {
+  display: block;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropzone active state */
+.dropzone-active {
+  border-color: #059669 !important;
+  background-color: #ecfdf5 !important;
+  transform: scale(1.01);
+}
+
+/* AI Leaf Scanner Animation */
+.scan-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 78, 59, 0.38);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.scan-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #34d399, #a7f3d0, #34d399, transparent);
+  box-shadow: 0 0 18px 4px rgba(52, 211, 153, 0.75);
+  animation: scanSweep 1.8s ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0% {
+    top: 4%;
+  }
+  50% {
+    top: 94%;
+  }
+  100% {
+    top: 4%;
+  }
+}
+
+/* Confidence ring smooth stroke */
+.confidence-ring-progress {
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Glassmorphism navbar */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Custom thin scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Toast notifications */
+.toast-enter {
+  animation: toastIn 0.28s ease-out forwards;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Print-friendly diagnostic report */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}

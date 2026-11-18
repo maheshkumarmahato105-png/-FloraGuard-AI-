@@ -1,0 +1,97 @@
+{
+  "architecture": "mobilenet_v2",
+  "device": "cuda",
+  "total_training_seconds": 733.94,
+  "best_val_accuracy_pct": 99.6,
+  "best_val_macro_f1_pct": 99.44,
+  "epochs": [
+    {
+      "epoch": 1,
+      "stage": "warmup",
+      "train_loss": 1.55886,
+      "train_acc": 0.80778,
+      "train_macro_f1": 0.75093,
+      "val_loss": 1.00273,
+      "val_acc": 0.9153,
+      "val_macro_f1": 0.88648,
+      "duration_sec": 266.78
+    },
+    {
+      "epoch": 2,
+      "stage": "warmup",
+      "train_loss": 1.05551,
+      "train_acc": 0.88627,
+      "train_macro_f1": 0.85366,
+      "val_loss": 0.93019,
+      "val_acc": 0.91603,
+      "val_macro_f1": 0.88468,
+      "duration_sec": 72.91
+    },
+    {
+      "epoch": 3,
+      "stage": "finetune",
+      "train_loss": 0.7882,
+      "train_acc": 0.95831,
+      "train_macro_f1": 0.94432,
+      "val_loss": 0.66142,
+      "val_acc": 0.98934,
+      "val_macro_f1": 0.98485,
+      "duration_sec": 78.6
+    },
+    {
+      "epoch": 4,
+      "stage": "finetune",
+      "train_loss": 0.67114,
+      "train_acc": 0.98513,
+      "train_macro_f1": 0.98043,
+      "val_loss": 0.62555,
+      "val_acc": 0.99179,
+      "val_macro_f1": 0.98611,
+      "duration_sec": 63.38
+    },
+    {
+      "epoch": 5,
+      "stage": "finetune",
+      "train_loss": 0.63371,
+      "train_acc": 0.99154,
+      "train_macro_f1": 0.98877,
+      "val_loss": 0.60313,
+      "val_acc": 0.99485,
+      "val_macro_f1": 0.99252,
+      "duration_sec": 62.77
+    },
+    {
+      "epoch": 6,
+      "stage": "finetune",
+      "train_loss": 0.61557,
+      "train_acc": 0.99396,
+      "train_macro_f1": 0.99209,
+      "val_loss": 0.60157,
+      "val_acc": 0.99363,
+      "val_macro_f1": 0.98978,
+      "duration_sec": 63.09
+    },
+    {
+      "epoch": 7,
+      "stage": "finetune",
+      "train_loss": 0.60197,
+      "train_acc": 0.99598,
+      "train_macro_f1": 0.99509,
+      "val_loss": 0.58894,
+      "val_acc": 0.99546,
+      "val_macro_f1": 0.99295,
+      "duration_sec": 62.41
+    },
+    {
+      "epoch": 8,
+      "stage": "finetune",
+      "train_loss": 0.59748,
+      "train_acc": 0.9963,
+      "train_macro_f1": 0.99516,
+      "val_loss": 0.58679,
+      "val_acc": 0.99595,
+      "val_macro_f1": 0.99436,
+      "duration_sec": 63.8
+    }
+  ]
+}

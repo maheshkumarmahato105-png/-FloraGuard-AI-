@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+
+# Database & runtime uploads
+database/*.db
+database/*.db-journal
+uploads/*
+!uploads/.gitkeep
+
+# Dataset (downloaded via training/download_dataset.py)
+dataset/*
+!dataset/.gitkeep
+!dataset/README.md
+
+# Trained model weights (optional: ignore large checkpoints if pushing to git)
+# backend/models/saved/*.pth
+backend/models/.torch_cache/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="14" fill="url(#fg_grad)" />
+  <path d="M34.5 13.5C24.5 13.5 15.5 18.8 14 31.5C14 31.5 19.5 34.5 26 32.5C33.2 30.3 35.8 21.8 34.5 13.5Z" fill="#FFFFFF" fill-opacity="0.96"/>
+  <path d="M14.5 34C18.5 27.5 24 22.5 31 18" stroke="#059669" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M21 26.5C21 23.5 22.5 21.5 25 20" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="35.5" cy="34.5" r="5" fill="#A7F3D0" stroke="#047857" stroke-width="2"/>
+  <path d="M33.6 34.5L34.9 35.8L37.5 33.2" stroke="#047857" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="fg_grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10B981"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+</svg>

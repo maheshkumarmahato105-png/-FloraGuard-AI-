@@ -1,0 +1,29 @@
+# Web Framework & Server
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pydantic==2.10.4
+
+# Database
+sqlalchemy==2.0.36
+# psycopg2-binary==2.9.10  # Uncomment when scaling from SQLite to PostgreSQL
+
+# AI / Machine Learning / Computer Vision
+torch>=2.5.0
+torchvision>=0.20.0
+opencv-python-headless>=4.10.0
+Pillow>=11.0.0
+numpy>=1.26.4
+pandas>=2.2.3
+scikit-learn>=1.6.0
+matplotlib>=3.10.0
+seaborn>=0.13.2
+tqdm>=4.67.1
+
+# Dataset download
+datasets>=3.2.0
+huggingface-hub>=0.27.0
+
+# Testing
+httpx>=0.28.1
+pytest>=8.3.4

@@ -1,0 +1,404 @@
+{
+  "evaluated_at_utc": "2026-11-18T05:26:41.895463+00:00",
+  "architecture": "mobilenet_v2",
+  "dataset": "PlantVillage (Color)",
+  "num_classes": 38,
+  "test_samples": 8158,
+  "dataset_splits": {
+    "train": 38065,
+    "val": 8158,
+    "test": 8158
+  },
+  "accuracy_pct": 99.57,
+  "top3_accuracy_pct": 100.0,
+  "macro_precision_pct": 99.39,
+  "macro_recall_pct": 99.57,
+  "macro_f1_pct": 99.47,
+  "weighted_precision_pct": 99.58,
+  "weighted_recall_pct": 99.57,
+  "weighted_f1_pct": 99.57,
+  "best_val_accuracy_pct": 99.5955,
+  "best_val_macro_f1_pct": 99.4361,
+  "per_class": [
+    {
+      "class_label": "Apple__Apple_scab",
+      "plant_name": "Apple",
+      "disease_name": "Apple Scab",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 95
+    },
+    {
+      "class_label": "Apple__Black_rot",
+      "plant_name": "Apple",
+      "disease_name": "Black Rot",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 93
+    },
+    {
+      "class_label": "Apple__Cedar_apple_rust",
+      "plant_name": "Apple",
+      "disease_name": "Cedar Apple Rust",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 43
+    },
+    {
+      "class_label": "Apple___healthy",
+      "plant_name": "Apple",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 250
+    },
+    {
+      "class_label": "Blueberry___healthy",
+      "plant_name": "Blueberry",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 225
+    },
+    {
+      "class_label": "Cherry_(including_sour)___Powdery_mildew",
+      "plant_name": "Cherry",
+      "disease_name": "Powdery Mildew",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 158
+    },
+    {
+      "class_label": "Cherry_(including_sour)___healthy",
+      "plant_name": "Cherry",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 99.22,
+      "recall_pct": 100.0,
+      "f1_pct": 99.61,
+      "support": 128
+    },
+    {
+      "class_label": "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+      "plant_name": "Corn (Maize)",
+      "disease_name": "Cercospora Leaf Spot (Gray Leaf Spot)",
+      "is_healthy": false,
+      "precision_pct": 89.53,
+      "recall_pct": 100.0,
+      "f1_pct": 94.48,
+      "support": 77
+    },
+    {
+      "class_label": "Corn_(maize)___Common_rust_",
+      "plant_name": "Corn (Maize)",
+      "disease_name": "Common Rust",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 179
+    },
+    {
+      "class_label": "Corn_(maize)___Northern_Leaf_Blight",
+      "plant_name": "Corn (Maize)",
+      "disease_name": "Northern Leaf Blight",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 93.92,
+      "f1_pct": 96.86,
+      "support": 148
+    },
+    {
+      "class_label": "Corn_(maize)___healthy",
+      "plant_name": "Corn (Maize)",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 174
+    },
+    {
+      "class_label": "Grape___Black_rot",
+      "plant_name": "Grape",
+      "disease_name": "Black Rot",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 177
+    },
+    {
+      "class_label": "Grape___Esca_(Black_Measles)",
+      "plant_name": "Grape",
+      "disease_name": "Esca (Black Measles)",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 207
+    },
+    {
+      "class_label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "plant_name": "Grape",
+      "disease_name": "Leaf Blight (Isariopsis Leaf Spot)",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 161
+    },
+    {
+      "class_label": "Grape___healthy",
+      "plant_name": "Grape",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 63
+    },
+    {
+      "class_label": "Orange___Haunglongbing_(Citrus_greening)",
+      "plant_name": "Orange (Citrus)",
+      "disease_name": "Huanglongbing (Citrus Greening)",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 826
+    },
+    {
+      "class_label": "Peach___Bacterial_spot",
+      "plant_name": "Peach",
+      "disease_name": "Bacterial Spot",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 99.71,
+      "f1_pct": 99.85,
+      "support": 345
+    },
+    {
+      "class_label": "Peach___healthy",
+      "plant_name": "Peach",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 98.18,
+      "recall_pct": 100.0,
+      "f1_pct": 99.08,
+      "support": 54
+    },
+    {
+      "class_label": "Pepper,_bell___Bacterial_spot",
+      "plant_name": "Pepper (Bell)",
+      "disease_name": "Bacterial Spot",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 149
+    },
+    {
+      "class_label": "Pepper,_bell___healthy",
+      "plant_name": "Pepper (Bell)",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 222
+    },
+    {
+      "class_label": "Potato___Early_blight",
+      "plant_name": "Potato",
+      "disease_name": "Early Blight",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 150
+    },
+    {
+      "class_label": "Potato___Late_blight",
+      "plant_name": "Potato",
+      "disease_name": "Late Blight",
+      "is_healthy": false,
+      "precision_pct": 99.34,
+      "recall_pct": 100.0,
+      "f1_pct": 99.67,
+      "support": 150
+    },
+    {
+      "class_label": "Potato___healthy",
+      "plant_name": "Potato",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 23
+    },
+    {
+      "class_label": "Raspberry___healthy",
+      "plant_name": "Raspberry",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 56
+    },
+    {
+      "class_label": "Soybean___healthy",
+      "plant_name": "Soybean",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 99.87,
+      "f1_pct": 99.93,
+      "support": 764
+    },
+    {
+      "class_label": "Squash___Powdery_mildew",
+      "plant_name": "Squash",
+      "disease_name": "Powdery Mildew",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 275
+    },
+    {
+      "class_label": "Strawberry___Leaf_scorch",
+      "plant_name": "Strawberry",
+      "disease_name": "Leaf Scorch",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 166
+    },
+    {
+      "class_label": "Strawberry___healthy",
+      "plant_name": "Strawberry",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 68
+    },
+    {
+      "class_label": "Tomato___Bacterial_spot",
+      "plant_name": "Tomato",
+      "disease_name": "Bacterial Spot",
+      "is_healthy": false,
+      "precision_pct": 99.37,
+      "recall_pct": 98.13,
+      "f1_pct": 98.75,
+      "support": 321
+    },
+    {
+      "class_label": "Tomato___Early_blight",
+      "plant_name": "Tomato",
+      "disease_name": "Early Blight",
+      "is_healthy": false,
+      "precision_pct": 97.32,
+      "recall_pct": 96.67,
+      "f1_pct": 96.99,
+      "support": 150
+    },
+    {
+      "class_label": "Tomato___Late_blight",
+      "plant_name": "Tomato",
+      "disease_name": "Late Blight",
+      "is_healthy": false,
+      "precision_pct": 98.59,
+      "recall_pct": 97.9,
+      "f1_pct": 98.25,
+      "support": 286
+    },
+    {
+      "class_label": "Tomato___Leaf_Mold",
+      "plant_name": "Tomato",
+      "disease_name": "Leaf Mold",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 99.3,
+      "f1_pct": 99.65,
+      "support": 143
+    },
+    {
+      "class_label": "Tomato___Septoria_leaf_spot",
+      "plant_name": "Tomato",
+      "disease_name": "Septoria Leaf Spot",
+      "is_healthy": false,
+      "precision_pct": 99.63,
+      "recall_pct": 100.0,
+      "f1_pct": 99.81,
+      "support": 266
+    },
+    {
+      "class_label": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "plant_name": "Tomato",
+      "disease_name": "Spider Mites (Two-Spotted Spider Mite)",
+      "is_healthy": false,
+      "precision_pct": 97.67,
+      "recall_pct": 100.0,
+      "f1_pct": 98.82,
+      "support": 251
+    },
+    {
+      "class_label": "Tomato___Target_Spot",
+      "plant_name": "Tomato",
+      "disease_name": "Target Spot",
+      "is_healthy": false,
+      "precision_pct": 98.11,
+      "recall_pct": 98.58,
+      "f1_pct": 98.35,
+      "support": 211
+    },
+    {
+      "class_label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "plant_name": "Tomato",
+      "disease_name": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+      "is_healthy": false,
+      "precision_pct": 99.75,
+      "recall_pct": 99.63,
+      "f1_pct": 99.69,
+      "support": 804
+    },
+    {
+      "class_label": "Tomato___Tomato_mosaic_virus",
+      "plant_name": "Tomato",
+      "disease_name": "Tomato Mosaic Virus (ToMV)",
+      "is_healthy": false,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 56
+    },
+    {
+      "class_label": "Tomato___healthy",
+      "plant_name": "Tomato",
+      "disease_name": "Healthy",
+      "is_healthy": true,
+      "precision_pct": 100.0,
+      "recall_pct": 100.0,
+      "f1_pct": 100.0,
+      "support": 244
+    }
+  ]
+}
