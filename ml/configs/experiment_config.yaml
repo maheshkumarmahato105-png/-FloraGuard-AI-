@@ -1,0 +1,61 @@
+# ==============================================================================
+# PlantDiseaseAI — Phase 4 Controlled Research Experiments Configuration
+# All three experiments share identical Phase 2 splits, preprocessing, seed,
+# optimizer, scheduler, loss, and early-stopping criteria for fair comparison.
+# The test split is strictly held out and NEVER used for model selection.
+# ==============================================================================
+
+shared_protocol:
+  random_seed: 42
+  dataset_manifest: "ml/data/metadata/split_manifest.csv"
+  train_split: "train"
+  validation_split: "validation"
+  held_out_test_split: "test"
+  external_eval_split: "external_plantdoc"
+  selection_metric: "val_macro_f1"
+
+experiments:
+  experiment_a_agrivision:
+    id: "exp_a_agrivision_cnn"
+    display_name: "Experiment A — AgriVision-CNN (Proposed)"
+    architecture: "agrivision_cnn"
+    pretrained: false
+    description: "Custom multi-scale (3x3 + 5x5) residual CNN with Squeeze-and-Excitation channel attention."
+    overrides:
+      training:
+        epochs: 30
+      data:
+        batch_size: 16
+      optimizer:
+        lr: 0.001
+        weight_decay: 0.0001
+
+  experiment_b_simple_cnn:
+    id: "exp_b_simple_cnn"
+    display_name: "Experiment B — Simple CNN (Baseline)"
+    architecture: "simple_cnn"
+    pretrained: false
+    description: "Plain 4-stage feed-forward CNN without residual connections, multi-scale fusion, or attention."
+    overrides:
+      training:
+        epochs: 30
+      data:
+        batch_size: 16
+      optimizer:
+        lr: 0.001
+        weight_decay: 0.0001
+
+  experiment_c_resnet18:
+    id: "exp_c_resnet18_scratch"
+    display_name: "Experiment C — ResNet18 From Scratch (Baseline)"
+    architecture: "resnet18_baseline"
+    pretrained: false
+    description: "Standard ResNet18 initialized strictly from scratch (weights=None) under identical conditions."
+    overrides:
+      training:
+        epochs: 30
+      data:
+        batch_size: 16
+      optimizer:
+        lr: 0.001
+        weight_decay: 0.0001

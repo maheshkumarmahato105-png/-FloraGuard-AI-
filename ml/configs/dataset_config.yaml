@@ -1,0 +1,160 @@
+# ==============================================================================
+# PlantDiseaseAI — Phase 2 Dataset & Preprocessing Configuration
+# Single source of truth for paths, validation rules, splitting, and transforms.
+# ==============================================================================
+
+project:
+  name: "PlantDiseaseAI"
+  phase: "Phase 2 - Dataset Collection, Exploration, and Preprocessing"
+  random_seed: 42
+
+paths:
+  raw_dir: "ml/data/raw"
+  plantvillage_raw: "ml/data/raw/plantvillage"
+  plantdoc_raw: "ml/data/raw/plantdoc"
+  plantseg_raw: "ml/data/raw/plantseg"
+  interim_dir: "ml/data/interim"
+  quarantine_dir: "ml/data/interim/quarantine"
+  processed_dir: "ml/data/processed"
+  processed_train: "ml/data/processed/train"
+  processed_validation: "ml/data/processed/validation"
+  processed_test: "ml/data/processed/test"
+  processed_external_plantdoc: "ml/data/processed/external_plantdoc"
+  metadata_dir: "ml/data/metadata"
+  reports_dir: "ml/reports"
+  charts_dir: "ml/reports/charts"
+  class_mapping_file: "ml/configs/class_mapping.yaml"
+
+datasets:
+  plantvillage:
+    name: "PlantVillage"
+    role: "primary_train_val_test"
+    kaggle_slug: "emmarex/plantdisease"
+    kaggle_url: "https://www.kaggle.com/datasets/emmarex/plantdisease"
+    hf_mirror_repo: "GVJahnavi/PlantVillage_dataset"
+    expected_classes: 38
+    license: "CC0 1.0 Public Domain / Academic Research Use (Hughes & Salathé, 2015)"
+    include_in_main_split: true
+
+  plantdoc:
+    name: "PlantDoc"
+    role: "external_real_world_evaluation"
+    git_url: "https://github.com/pratikkayal/PlantDoc-Dataset.git"
+    homepage_url: "https://github.com/pratikkayal/PlantDoc-Dataset"
+    license: "CC BY 4.0 (Singh et al., ACM CoDS-COMAD 2020)"
+    include_in_main_split: false
+
+  plantseg:
+    name: "PlantSeg"
+    role: "future_segmentation_research"
+    paper_url: "https://www.nature.com/articles/s41597-025-06513-4"
+    license: "See Nature Scientific Data descriptor (s41597-025-06513-4) for official dataset license and terms"
+    include_in_main_split: false
+
+image:
+  target_width: 224
+  target_height: 224
+  channels: 3
+  color_mode: "RGB"
+  supported_formats:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".webp"
+    - ".bmp"
+  output_format: "JPEG"
+  output_quality: 95
+  preserve_aspect_ratio: true
+  padding_mode: "constant"          # constant | edge | reflect
+  padding_fill_rgb: [124, 116, 104] # Approximate ImageNet mean RGB to avoid sharp black borders
+
+validation:
+  min_width: 64
+  min_height: 64
+  max_width: 10000
+  max_height: 10000
+  min_aspect_ratio: 0.25            # width / height lower bound
+  max_aspect_ratio: 4.0             # width / height upper bound
+  min_file_bytes: 512
+  quarantine_copy_files: true       # Copies questionable images to interim/quarantine; never deletes raw files
+
+duplicates:
+  exact_hash_algorithm: "sha256"
+  perceptual_hash_size: 8           # 8x8 -> 64-bit pHash & dHash
+  near_duplicate_hamming_threshold: 4
+  exact_duplicate_action: "group_and_keep_primary"
+  near_duplicate_action: "group_same_split"
+
+splitting:
+  train_ratio: 0.70
+  validation_ratio: 0.15
+  test_ratio: 0.15
+  min_samples_per_class: 10         # Flag classes below this threshold instead of silently producing invalid splits
+  stratify: true
+  group_by_duplicate_cluster: true  # Prevents exact/near-duplicate leakage across splits
+  keep_plantdoc_external: true
+
+normalization:
+  # ImageNet statistics (standard for transfer learning and consistent training/inference)
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+dataloader:
+  # Reserved for Phase 3 training
+  batch_size: 32
+  eval_batch_size: 64
+  num_workers: 4
+  pin_memory: true
+
+augmentation:
+  # Applied ONLY to training images (never validation or test)
+  train_only: true
+  horizontal_flip_prob: 0.5
+  rotation_degrees: 15
+  random_crop_scale: [0.85, 1.0]
+  random_crop_ratio: [0.9, 1.1]
+  brightness_jitter: 0.20
+  contrast_jitter: 0.20
+  saturation_jitter: 0.15
+  hue_jitter: 0.03
+
+classes:
+  # Canonical 38 PlantVillage crop-condition categories (verified in class_mapping.yaml)
+  - "apple__apple_scab"
+  - "apple__black_rot"
+  - "apple__cedar_apple_rust"
+  - "apple__healthy"
+  - "blueberry__healthy"
+  - "cherry__healthy"
+  - "cherry__powdery_mildew"
+  - "corn__cercospora_gray_leaf_spot"
+  - "corn__common_rust"
+  - "corn__healthy"
+  - "corn__northern_leaf_blight"
+  - "grape__black_rot"
+  - "grape__esca_black_measles"
+  - "grape__healthy"
+  - "grape__leaf_blight_isariopsis"
+  - "orange__huanglongbing_citrus_greening"
+  - "peach__bacterial_spot"
+  - "peach__healthy"
+  - "pepper_bell__bacterial_spot"
+  - "pepper_bell__healthy"
+  - "potato__early_blight"
+  - "potato__healthy"
+  - "potato__late_blight"
+  - "raspberry__healthy"
+  - "soybean__healthy"
+  - "squash__powdery_mildew"
+  - "strawberry__healthy"
+  - "strawberry__leaf_scorch"
+  - "tomato__bacterial_spot"
+  - "tomato__early_blight"
+  - "tomato__healthy"
+  - "tomato__late_blight"
+  - "tomato__leaf_mold"
+  - "tomato__septoria_leaf_spot"
+  - "tomato__spider_mites_two_spotted"
+  - "tomato__target_spot"
+  - "tomato__tomato_mosaic_virus"
+  - "tomato__tomato_yellow_leaf_curl_virus"

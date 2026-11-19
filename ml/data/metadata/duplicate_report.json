@@ -1,0 +1,284 @@
+{
+  "generated_at_utc": "2026-11-18T05:50:43.251766+00:00",
+  "parameters": {
+    "exact_hash": "sha256 (file + decoded RGB pixels)",
+    "perceptual_hashes": "64-bit pHash (DCT) + 64-bit dHash",
+    "phash_hamming_threshold": 4,
+    "dhash_confirm_threshold": 6
+  },
+  "total_valid_images_analyzed": 56952,
+  "total_duplicate_clusters": 414,
+  "clusters_with_exact_duplicates": 304,
+  "clusters_near_duplicate_only": 110,
+  "role_counts": {
+    "unique": 56121,
+    "primary": 414,
+    "exact_duplicate": 304,
+    "near_duplicate": 113
+  },
+  "by_dataset_source": {
+    "plantdoc": {
+      "total_valid": 2571,
+      "unique": 2443,
+      "primary_of_cluster": 63,
+      "exact_duplicates": 17,
+      "near_duplicates": 48
+    },
+    "plantvillage": {
+      "total_valid": 54381,
+      "unique": 53678,
+      "primary_of_cluster": 351,
+      "exact_duplicates": 287,
+      "near_duplicates": 65
+    }
+  },
+  "cross_dataset_duplicate_clusters_count": 0,
+  "cross_dataset_duplicate_clusters_sample": [],
+  "cross_label_duplicate_clusters_count": 31,
+  "cross_label_duplicate_clusters_sample": [
+    {
+      "group_id": "DUP_00353",
+      "size": 2,
+      "labels": [
+        "corn__cercospora_gray_leaf_spot",
+        "corn__northern_leaf_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Corn Gray leaf spot/IMG_42231.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn leaf blight/IMG_42231.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00354",
+      "size": 2,
+      "labels": [
+        "corn__cercospora_gray_leaf_spot",
+        "corn__northern_leaf_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Corn leaf blight/2015070295153021.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot/2015070295153021.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00355",
+      "size": 2,
+      "labels": [
+        "corn__cercospora_gray_leaf_spot",
+        "corn__northern_leaf_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Corn leaf blight/corn-gray-leaf-spot-f4.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot/corn-gray-leaf-spot-f4.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00356",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf early blight/backus-056-potato-blight.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/backus-056-potato-blight.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00357",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "tomato__early_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf early blight/earlyblightpotato.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/earlyblightpotato.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00358",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight/1421_0.jpeg_itok=FMtmgePj.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/1421_0.jpeg_itok=FMtmgePj.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00359",
+      "size": 3,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight",
+        "tomato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight/5816740026_d42ef24413_Phytophthora-Infestans.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/5816740026_d42ef24413_Phytophthora-Infestans.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/tomato-late-blight-foliar-lesions_Scot-Nelson_CC-BY-SA-2.0.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00360",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight/irish-blight-symptoms-on-potato-leaves-atmf8b.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/irish-blight-symptoms-on-potato-leaves-atmf8b.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00362",
+      "size": 2,
+      "labels": [
+        "tomato__bacterial_spot",
+        "tomato__septoria_leaf_spot"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Tomato leaf bacterial spot/tomato_V8.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Septoria leaf spot/tomato_V8.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00371",
+      "size": 2,
+      "labels": [
+        "pepper_bell__bacterial_spot",
+        "tomato__septoria_leaf_spot"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Bell_pepper leaf spot/Septoria-leaf-spot.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Septoria leaf spot/tomato-blight-treatment-blight.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00372",
+      "size": 2,
+      "labels": [
+        "corn__cercospora_gray_leaf_spot",
+        "corn__northern_leaf_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot/gls99-anamosa.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn leaf blight/gls99-anamosa-400x334.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00379",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/14321627273_58d893c3e2_potato-plant.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/14321627273_58d893c3e2_b.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00380",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/18028_1.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/24064_1.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00381",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "tomato__early_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/2OBH_29_Gardening_early_blight.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/Early_Blight_of_Tomato1687.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00382",
+      "size": 3,
+      "labels": [
+        "potato__early_blight",
+        "tomato__early_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/36-early-blight-concentric-rings.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/EBTomato.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/tomatoblight.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00383",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "potato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/45035_1.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/Late+blight+on+potato.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00384",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "tomato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/backus-045-potato-blight.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/a7710b5901ba1f8e9759ef7576cd9f09.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00385",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "tomato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/Blght.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/LBleaf2INIA_0.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00386",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "tomato__early_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/early-blight-closeup-NCSU.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/early-blight-closeup-sm.jpg"
+      ]
+    },
+    {
+      "group_id": "DUP_00387",
+      "size": 2,
+      "labels": [
+        "potato__early_blight",
+        "tomato__late_blight"
+      ],
+      "paths": [
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/Early-Blight-Leaves-56a348bf3df78cf7727cb35e.jpg",
+        "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/Pest2369.jpg"
+      ]
+    }
+  ],
+  "candidate_hash_pairs_checked": 4803868
+}

@@ -1,14 +1,20 @@
 services:
   - type: web
-    name: floraguard-ai
+    name: plantdiseaseai-backend
     env: python
     region: oregon
     plan: free
-    buildCommand: "pip install --upgrade pip && pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -r backend/requirements.txt"
-    startCommand: "uvicorn backend.app:app --host 0.0.0.0 --port $PORT --workers 1"
+    buildCommand: "pip install --upgrade pip && pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -r backend/app/requirements.txt"
+    startCommand: "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --workers 1"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.0
-      - key: CONFIDENCE_THRESHOLD
-        value: "0.60"
-    healthCheckPath: /api/health
+        value: 3.11.8
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: INFERENCE_DEVICE
+        value: cpu
+      - key: CORS_ORIGINS
+        value: "http://localhost:5173,http://127.0.0.1:5173,https://*.vercel.app"
+    healthCheckPath: /api/v1/health

@@ -1,34 +1,130 @@
-# Python
+# ==============================================================================
+# PlantDiseaseAI — .gitignore
+# Keeps virtual environments, datasets, model weights, logs, and secrets out of Git
+# ==============================================================================
+
+# Python bytecode & caches
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# Virtual environments
 .venv/
 venv/
+env/
 ENV/
-*.egg-info/
-.pytest_cache/
 
-# Environment variables
+# Environment variables & secrets
 .env
-.env.local
+.env.*
+!.env.example
 
-# Database & runtime uploads
-database/*.db
-database/*.db-journal
-uploads/*
-!uploads/.gitkeep
+# Datasets (never commit raw, interim, or processed image datasets)
+ml/data/metadata/*_manifest.csv
+ml/data/metadata/*.csv.gz
+ml/data/raw/*
+!ml/data/raw/.gitkeep
+!ml/data/raw/plantvillage/.gitkeep
+!ml/data/raw/plantdoc/.gitkeep
+!ml/data/raw/plantseg/.gitkeep
+ml/data/raw/plantvillage/*
+!ml/data/raw/plantvillage/.gitkeep
+ml/data/raw/plantdoc/*
+!ml/data/raw/plantdoc/.gitkeep
+ml/data/raw/plantseg/*
+!ml/data/raw/plantseg/.gitkeep
+ml/data/interim/*
+!ml/data/interim/.gitkeep
+ml/data/processed/*
+!ml/data/processed/.gitkeep
+!ml/data/processed/train/.gitkeep
+!ml/data/processed/validation/.gitkeep
+!ml/data/processed/test/.gitkeep
+ml/data/processed/train/*
+!ml/data/processed/train/.gitkeep
+ml/data/processed/validation/*
+!ml/data/processed/validation/.gitkeep
+ml/data/processed/test/*
+!ml/data/processed/test/.gitkeep
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.parquet
+*.h5
+*.hdf5
 
-# Dataset (downloaded via training/download_dataset.py)
-dataset/*
-!dataset/.gitkeep
-!dataset/README.md
+# Trained model weights, checkpoints, and run artifacts
+artifacts/*
+!artifacts/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+*.pkl
+*.joblib
 
-# Trained model weights (optional: ignore large checkpoints if pushing to git)
-# backend/models/saved/*.pth
-backend/models/.torch_cache/
+# TensorBoard & experiment logs
+runs/
+logs/
+events.out.tfevents.*
+ml/experiments/logs/*
+!ml/experiments/logs/.gitkeep
+ml/experiments/checkpoints/*
+!ml/experiments/checkpoints/.gitkeep
+ml/experiments/results/*
+!ml/experiments/results/.gitkeep
+ml/experiments/evaluation/metrics/*
+!ml/experiments/evaluation/metrics/.gitkeep
+ml/experiments/evaluation/charts/*
+!ml/experiments/evaluation/charts/.gitkeep
+ml/experiments/evaluation/predictions/*
+!ml/experiments/evaluation/predictions/.gitkeep
+ml/experiments/evaluation/reports/*
+!ml/experiments/evaluation/reports/.gitkeep
 
-# OS & Editor
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+backend/runtime/
+backend/.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Frontend (Node.js / React — future phase)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+npm-debug.log*
+
+# OS & IDE files
 .DS_Store
 Thumbs.db
+Desktop.ini
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Runtime logs and backup folders
+*.log
+ui_redesign_backup/
+_legacy_v1_backup/

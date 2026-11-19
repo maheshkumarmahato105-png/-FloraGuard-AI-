@@ -1,188 +1,112 @@
-# FloraGuard AI — Plant Disease Detection System
+# PlantDiseaseAI — Intelligent Plant Disease Detection System
 
-> **Workspace Organization:** This workspace contains two cleanly separated layers:
-> 1. **Live Web Application (Workspace Root):** Ready-to-run **FloraGuard AI** FastAPI + Tailwind CSS website backed by a trained MobileNetV2 model (`99.57%` test accuracy across 38 PlantVillage classes). Launch anytime with `.\run_website.ps1`.
-> 2. **Research ML Engineering Suite ([PlantDiseaseAI/](PlantDiseaseAI/README.md)):** Modular Phases 1–5 research project featuring the custom **AgriVision-CNN** architecture, leak-free PlantVillage + PlantDoc pipeline, training engine, and evaluation suite (`37/37` tests passing). See [PlantDiseaseAI/docs/PROJECT_STRUCTURE.md](PlantDiseaseAI/docs/PROJECT_STRUCTURE.md).
+**PlantDiseaseAI** is a research-grade, modular deep learning system for plant leaf disease classification using a custom PyTorch architecture (**AgriVision-CNN**), leak-free multi-dataset preprocessing (**PlantVillage** + external **PlantDoc** + **PlantSeg** roadmap), reproducible training, and rigorous evaluation.
 
-An end-to-end, full-stack AI-powered **Plant Disease Detection System** built with **PyTorch (MobileNetV2 / EfficientNet-B0)**, **OpenCV**, **FastAPI**, **SQLite / PostgreSQL**, and a responsive **Tailwind CSS + ES6 JavaScript** web dashboard.
-
-Supports real-time detection from **laptop/desktop webcams**, **mobile rear/front cameras**, **drag-and-drop uploads**, and **device galleries** across **38 PlantVillage crop-disease classes** (including Tomato, Potato, Apple, Corn, Grape, Pepper, Strawberry, and more).
+> **Completed Milestones:** Phases 1–5 (Environment Setup, Dataset Pipeline, Custom `AgriVision-CNN` Architecture, Training & Optimization Engine, Evaluation & Hardware Benchmarking). Full multi-epoch GPU training and Phase 6+ (Explainable AI / Grad-CAM / Backend / React Frontend) await user approval.
 
 ---
 
-## Features
+## Technology Stack
 
-- **Multi-Modal Image Input**
-  - **Live Camera (`getUserMedia`)**: Works on desktop webcams and mobile cameras, defaults to the rear (`environment`) camera on mobile, and supports one-tap camera switching.
-  - **Drag-and-Drop & File Upload**: Accepts `.jpg`, `.jpeg`, `.png`, and `.webp` images up to 10 MB with instant preview and client-side mobile image optimization.
-  - **Mobile Native Camera Fallback**: Direct `<input capture="environment">` capture for mobile browsers.
-- **Computer Vision & AI Pipeline**
-  - Strict server-side image validation (MIME type, extension, PIL integrity, EXIF orientation, minimum resolution).
-  - OpenCV sharpness (Laplacian variance) and exposure checks, plus adaptive HSV leaf ROI focusing and edge-preserving denoising.
-  - Real PyTorch transfer-learning CNN inference (`MobileNetV2` / `EfficientNet-B0`) with ImageNet normalization.
-  - **No Fake Predictions**: Low-confidence predictions (<60%) or severely dark/unclear images return an `Uncertain` status with actionable photography guidance.
-- **Agronomic Knowledge Base & Persistent History**
-  - Full disease profiles covering all 38 PlantVillage classes: description, visible symptoms, possible causes, prevention methods, treatment guidance, and severity level.
-  - Persistent history stored in **SQLite** via SQLAlchemy (scalable to **PostgreSQL** via `DATABASE_URL`) with search, status filtering, detail replay, JSON export, and print support.
+| Layer | Technology |
+| :--- | :--- |
+| **Runtime** | Python 3.11.18 (isolated `.venv` virtual environment) |
+| **Deep Learning** | PyTorch `2.11.0+cu128`, Torchvision `0.26.0+cu128` (CUDA 12.8 on RTX 5050) |
+| **Computer Vision** | OpenCV (`opencv-python`), Pillow (`PIL`) |
+| **Data Science & Tracking** | NumPy, Pandas, scikit-learn, Matplotlib, PyYAML, tqdm, TensorBoard |
+| **Backend API (Reserved)** | FastAPI, Uvicorn, `python-multipart`, `python-dotenv` |
+| **Frontend (Reserved)** | React.js, JavaScript (Node.js `v24.19.0`) |
+| **Testing & VCS** | `pytest` (`37/37` tests passing), Git |
 
 ---
 
-## Project Structure
+## Organized Project Structure
+
+See [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) for the complete file-by-file directory index.
 
 ```text
-Plant Disease Detection/
-├── frontend/
-│   ├── index.html                  # Responsive 5-page SPA dashboard (Home, Detect, Results, History, About)
-│   ├── css/styles.css              # Custom animations, scanner overlay, print styles
-│   ├── js/
-│   │   ├── api.js                  # REST API client
-│   │   ├── camera.js               # Desktop/mobile camera controller & image optimizer
-│   │   └── app.js                  # Main UI state and workflow controller
-│   ├── components/
-│   │   ├── navbar.js               # Navigation bar & live backend health pill
-│   │   ├── resultCard.js           # Confidence ring, top-3 chart & agronomic report
-│   │   └── historyTable.js         # Responsive desktop table & mobile history cards
-│   └── assets/logo.svg
-│
-├── backend/
-│   ├── app.py                      # FastAPI application entrypoint (serves API + Frontend)
-│   ├── config.py                   # Paths, thresholds, and DB settings
-│   ├── database.py                 # SQLAlchemy engine & session management
-│   ├── routes/
-│   │   ├── health.py               # GET /api/health, /api/plants, /api/evaluation
-│   │   ├── upload.py               # POST /api/upload
-│   │   ├── predict.py              # POST /api/predict
-│   │   └── history.py              # GET /api/history, GET/DELETE /api/history/{id}
-│   ├── services/
-│   │   ├── image_processor.py      # Validation, OpenCV leaf focus & tensor transform
-│   │   ├── model_service.py        # PyTorch model loader & uncertainty-aware inference
-│   │   └── disease_knowledge.py    # 38-class agronomic symptom/treatment knowledge base
-│   ├── models/
-│   │   ├── db_models.py            # SQLAlchemy PredictionRecord ORM model
-│   │   ├── schemas.py              # Pydantic API schemas
-│   │   └── saved/                  # Trained .pth checkpoint, class_names.json, model_metadata.json
-│   └── requirements.txt
-│
-├── training/
-│   ├── download_dataset.py         # Automated PlantVillage dataset downloader
-│   ├── preprocess.py               # Image validation, leak-free train/val/test split & DataLoaders
-│   ├── train.py                    # Two-stage MobileNetV2 / EfficientNet-B0 transfer learning
-│   ├── evaluate.py                 # Held-out test evaluation & confusion matrix generator
-│   └── reports/                    # evaluation_report.md, evaluation_metrics.json, plots
-│
-├── tests/test_api.py               # End-to-end FastAPI test suite
-├── dataset/                        # PlantVillage raw images and split manifests
-├── uploads/                        # Saved uploaded/captured leaf images
-├── database/                       # plant_disease.db (SQLite)
-├── README.md
-└── .gitignore
+PlantDiseaseAI/
+├── ml/
+│   ├── configs/            # dataset_config, class_mapping, model_config, training_config, experiment_config
+│   ├── data/
+│   │   ├── raw/            # plantvillage (54,381), plantdoc (2,573), plantseg (manual instructions)
+│   │   ├── interim/        # Non-destructive quarantine folder (2 flagged PlantDoc files)
+│   │   ├── processed/      # Deterministic 224x224 RGB letterbox splits: train/validation/test/external_plantdoc
+│   │   └── metadata/       # image_manifest, split_manifest, class_distribution, cleaning/duplicate/summary JSONs
+│   ├── src/
+│   │   ├── datasets/       # plant_dataset.py (Phase 2 manifest DataLoaders)
+│   │   ├── models/         # agrivision_cnn, simple_cnn, resnet_baseline, attention, residual_block, model_factory, checkpoint_utils
+│   │   ├── training/       # train, trainer, engine, optimizer, scheduler, loss, checkpoint, metrics, early_stopping
+│   │   ├── evaluation/     # evaluate, metrics, confusion_matrix, classification_report, calibration, external_validation, robustness, error_analysis, inference_benchmark, model_comparison
+│   │   └── *.py            # Phase 2–3 pipeline scripts (download, validate, detect_duplicates, explore, split, preprocess, dataset_statistics, analyze_model)
+│   ├── experiments/        # logs/, checkpoints/, results/, evaluation/{metrics,charts,predictions,reports}/
+│   ├── reports/            # dataset_report.md, model_architecture_report.md, training_report.md, phase5_research_report.md & charts/
+│   └── tests/              # 7 test suites (37 passing tests)
+├── backend/app/            # Reserved FastAPI structure (api, core, services, models)
+├── frontend/               # Reserved React.js frontend directory
+├── artifacts/              # Reserved exported model artifacts
+├── notebooks/              # Reserved EDA & research notebooks
+├── docs/                   # PROJECT_STRUCTURE.md, project_cleanup_report.md
+├── .venv/                  # Python 3.11.18 virtual environment (Git-ignored)
+├── requirements.txt        # Direct dependencies
+├── requirements.lock.txt   # Exact pinned lockfile
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-## Quick Start (Local Setup)
+## Quick Commands (Windows PowerShell)
 
-### 1. Environment & Dependencies
-
-Create a Python 3.12 virtual environment and install dependencies:
+Activate the Python 3.11 virtual environment from inside `PlantDiseaseAI/`:
 
 ```powershell
-# Using uv (recommended)
-uv venv --python 3.12 .venv
-
-# Install PyTorch (CUDA 12.8 for NVIDIA GPUs, or drop --index-url for CPU)
-uv pip install --python .venv\Scripts\python.exe torch torchvision --index-url https://download.pytorch.org/whl/cu128
-
-# Install remaining backend and ML dependencies
-uv pip install --python .venv\Scripts\python.exe -r backend/requirements.txt
+cd PlantDiseaseAI
+.\.venv\Scripts\Activate.ps1
 ```
 
-Or with standard `venv` + `pip`:
+### Phase 1 — Verify GPU & Environment
 ```powershell
-python -m venv .venv
-.venv\Scripts\pip.exe install -r backend/requirements.txt
+python ml/tests/test_gpu.py
 ```
 
-### 2. Download Dataset, Preprocess, Train & Evaluate Model
-
+### Phase 2 — Dataset Pipeline (Already Executed)
 ```powershell
-# Step 1: Download the 38-class PlantVillage dataset (color images)
-.venv\Scripts\python.exe training/download_dataset.py
-
-# Step 2: Validate images and create stratified 70/15/15 Train/Val/Test splits
-.venv\Scripts\python.exe training/preprocess.py
-
-# Step 3: Train MobileNetV2 via 2-stage transfer learning (uses GPU automatically if available)
-.venv\Scripts\python.exe training/train.py --arch mobilenet_v2 --warmup-epochs 2 --finetune-epochs 6 --batch-size 64
-
-# Step 4: Evaluate on the held-out test set and generate reports & confusion matrix
-.venv\Scripts\python.exe training/evaluate.py
+python ml/src/download_dataset.py
+python ml/src/validate_images.py
+python ml/src/detect_duplicates.py
+python ml/src/explore_dataset.py
+python ml/src/split_dataset.py
+python ml/src/preprocess.py
+python ml/src/dataset_statistics.py
 ```
 
-### 3. Run the Application
-
+### Phase 3 — Architecture Profiling & Diagram
 ```powershell
-.venv\Scripts\uvicorn.exe backend.app:app --host 0.0.0.0 --port 8000 --reload
+python ml/src/analyze_model.py
 ```
 
-Open your browser at:
-- **Web Dashboard**: `http://127.0.0.1:8000`
-- **Interactive API Docs (Swagger UI)**: `http://127.0.0.1:8000/docs`
-
-> **Mobile Camera Note**: Modern mobile browsers allow `getUserMedia` live camera access on `localhost` or over **HTTPS**. On a local LAN IP over HTTP, the **Mobile Camera Capture** button (`capture="environment"`) works natively as a seamless fallback, or serve behind HTTPS/tunnel for WebRTC live preview.
-
-### 4. Scaling from SQLite to PostgreSQL
-
-The backend defaults to `database/plant_disease.db`. To switch to PostgreSQL:
-1. Install `psycopg2-binary`.
-2. Set `DATABASE_URL` before starting Uvicorn:
-   ```powershell
-   $env:DATABASE_URL = "postgresql+psycopg2://user:password@localhost:5432/plant_disease"
-   .venv\Scripts\uvicorn.exe backend.app:app --host 0.0.0.0 --port 8000
-   ```
-
----
-
-## REST API Reference
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/api/health` | Backend, database, and trained model availability + evaluation summary |
-| `GET` | `/api/plants` | Supported crops and disease classes loaded from the trained model |
-| `GET` | `/api/evaluation` | Real held-out test evaluation metrics and plot URLs |
-| `POST` | `/api/upload` | Securely validate, inspect, and store an uploaded image |
-| `POST` | `/api/predict` | Run OpenCV preprocessing + PyTorch inference and save result to DB |
-| `GET` | `/api/history` | List past detection records (filterable by `plant`, `status`, `search`) |
-| `GET` | `/api/history/{id}` | Retrieve full details for a single detection record |
-| `DELETE` | `/api/history/{id}` | Delete a detection record and clean up its unreferenced image |
-
----
-
-## Verified Model Evaluation Report
-
-Trained and evaluated on the full **38-class PlantVillage (Color)** dataset (**54,381 images**: 38,065 train / 8,158 validation / 8,158 held-out test) using **MobileNetV2** two-stage transfer learning (2 warmup epochs + 6 fine-tuning epochs, mixed-precision AMP on NVIDIA GeForce RTX 5050 Laptop GPU):
-
-| Metric | Held-Out Test Set Score |
-| :--- | ---: |
-| **Test Accuracy** | **99.57%** |
-| **Top-3 Accuracy** | **100.00%** |
-| **Macro Precision** | **99.39%** |
-| **Macro Recall** | **99.57%** |
-| **Macro F1-Score** | **99.47%** |
-| **Weighted F1-Score** | **99.57%** |
-
-Full per-class metrics and visualizations are generated in:
-- `training/reports/evaluation_report.md`
-- `training/reports/evaluation_metrics.json`
-- `training/reports/confusion_matrix.png`
-- `training/reports/training_curves.png`
-
----
-
-## Automated Tests
-
+### Phase 4 — Pre-Flight Check & Controlled Training
 ```powershell
-.venv\Scripts\pytest.exe tests/test_api.py -v
+# Safe single-batch real-dataset & GPU VRAM dry-run
+python ml/src/training/train.py --experiment experiment_a_agrivision --dry-run
+
+# Full training runs (when ready)
+python ml/src/training/train.py --experiment experiment_a_agrivision
+python ml/src/training/train.py --experiment experiment_b_simple_cnn
+python ml/src/training/train.py --experiment experiment_c_resnet18
+
+# TensorBoard live monitoring
+tensorboard --logdir ml/experiments/logs
 ```
-#   - F l o r a G u a r d - A I - P l a n t - D i s e a s e - D e t e c t i o n - S y s t e m  
- 
+
+### Phase 5 — Evaluation & Benchmarking
+```powershell
+python ml/src/evaluation/evaluate.py
+```
+
+### Run Complete Automated Test Suite (37 Tests)
+```powershell
+$env:PYTHONDONTWRITEBYTECODE = "1"
+pytest ml/tests -p no:cacheprovider -v
+```

@@ -1,0 +1,686 @@
+{
+  "generated_at_utc": "2026-11-18T05:52:58.545786+00:00",
+  "config_snapshot": {
+    "random_seed": 42,
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "min_samples_per_class": 10,
+    "dataset_roles": {
+      "plantvillage": "primary_train_val_test",
+      "plantdoc": "external_real_world_evaluation",
+      "plantseg": "future_segmentation_research"
+    }
+  },
+  "provenance": {
+    "datasets": {
+      "plantdoc": {
+        "name": "PlantDoc",
+        "status": "downloaded_git_windows_safe_archive",
+        "source_url": "https://github.com/pratikkayal/PlantDoc-Dataset",
+        "git_url": "https://github.com/pratikkayal/PlantDoc-Dataset.git",
+        "version": "git:5467f6012d78d1c446145d5f582da6096f852ae8",
+        "license": "CC BY 4.0 (Singh et al., ACM CoDS-COMAD 2020)",
+        "downloaded_at_utc": "2026-11-18T05:45:41.017104+00:00",
+        "raw_path": "C:\\Users\\Mahesh Kumar Mahato\\Desktop\\Plant Disease Detection\\PlantDiseaseAI\\ml\\data\\raw\\plantdoc",
+        "image_count": 2573,
+        "class_folder_count": 56,
+        "windows_sanitized_filenames": [
+          "test/Bell_pepper leaf/IMG_1629.JPG?1507122477.jpg -> test/Bell_pepper leaf/IMG_1629.JPG_1507122477.jpg",
+          "test/Corn Gray leaf spot/show_picture.asp?id=aaaaaaaaaaogcqq&w2=420&h2=378&clip=center,420,378&meta=0.jpg -> test/Corn Gray leaf spot/show_picture.asp_id=aaaaaaaaaaogcqq&w2=420&h2=378&clip=center,420,378&meta=0.jpg",
+          "test/Potato leaf late blight/1421_0.jpeg?itok=FMtmgePj.jpg -> test/Potato leaf late blight/1421_0.jpeg_itok=FMtmgePj.jpg",
+          "test/grape leaf/grape-leaf-picture-id119212425?k=6&m=119212425&s=612x612&w=0&h=8RZBWGcvXe4tAwhhvYZVFzWyRyiN5iTxKfWBpPT1FcU=.jpg -> test/grape leaf/grape-leaf-picture-id119212425_k=6&m=119212425&s=612x612&w=0&h=8RZBWGcvXe4tAwhhvYZVFzWyRyiN5iTxKfWBpPT1FcU=.jpg",
+          "test/grape leaf/latest?cb=20100621160325.jpg -> test/grape leaf/latest_cb=20100621160325.jpg",
+          "train/Apple Scab Leaf/01Apple-scab-2-Venturia-inaequalis.ashx?w=600&h=408&bc=ffffff.jpg -> train/Apple Scab Leaf/01Apple-scab-2-Venturia-inaequalis.ashx_w=600&h=408&bc=ffffff.jpg",
+          "train/Apple Scab Leaf/6A642AA3-1DB1-4413-B0B6-7FBB68A5904A_original.jpeg?1528657579.jpg -> train/Apple Scab Leaf/6A642AA3-1DB1-4413-B0B6-7FBB68A5904A_original.jpeg_1528657579.jpg",
+          "train/Apple Scab Leaf/Apple_scab.jpg?t=1473441220256&width=300&height=200&name=Apple_scab.jpg -> train/Apple Scab Leaf/Apple_scab.jpg_t=1473441220256&width=300&height=200&name=Apple_scab.jpg",
+          "train/Apple Scab Leaf/IMG_3166_1500x1500%253E.JPG?1473520197.jpg -> train/Apple Scab Leaf/IMG_3166_1500x1500%253E.JPG_1473520197.jpg",
+          "train/Apple Scab Leaf/branch-with-ill-leaf-of-apple-scab-disease-picture-id928917010?k=6&m=928917010&s=612x612&w=0&h=UY6EBbnGkTzVcp4Tm8myYO7KoIOtrZo3VRDrd91qslo=.jpg -> train/Apple Scab Leaf/branch-with-ill-leaf-of-apple-scab-disease-picture-id928917010_k=6&m=928917010&s=612x612&w=0&h=UY6EBbnGkTzVcp4Tm8myYO7KoIOtrZo3VRDrd91qslo=.jpg",
+          "train/Apple leaf/green-leaf-picture-id177130309?b=1&k=6&m=177130309&s=612x612&w=0&h=VP3U0AM5j0fvQqOwuI5f7cmb2Ji88mVep0eoXQaJRfs=.jpg -> train/Apple leaf/green-leaf-picture-id177130309_b=1&k=6&m=177130309&s=612x612&w=0&h=VP3U0AM5j0fvQqOwuI5f7cmb2Ji88mVep0eoXQaJRfs=.jpg",
+          "train/Apple leaf/leaves-isolated-on-white-background-picture-id537925565?k=6&m=537925565&s=612x612&w=0&h=Ogzc4YHTI4i4q9aiTIG6Zq2sAMv6xTKiDlCmYANlzK8=.jpg -> train/Apple leaf/leaves-isolated-on-white-background-picture-id537925565_k=6&m=537925565&s=612x612&w=0&h=Ogzc4YHTI4i4q9aiTIG6Zq2sAMv6xTKiDlCmYANlzK8=.jpg",
+          "train/Apple leaf/ripe-red-apple-with-green-leaf-isolated-on-white-picture-id184640296?s=612x612.jpg -> train/Apple leaf/ripe-red-apple-with-green-leaf-isolated-on-white-picture-id184640296_s=612x612.jpg",
+          "train/Apple leaf/ripe-red-apple-with-leaf-picture-id117485645?b=1&k=6&m=117485645&s=612x612&w=0&h=Ii96HYzF-2E5ky-IcXbVhvEFvU28o0rlkwagb7T6LhY=.jpg -> train/Apple leaf/ripe-red-apple-with-leaf-picture-id117485645_b=1&k=6&m=117485645&s=612x612&w=0&h=Ii96HYzF-2E5ky-IcXbVhvEFvU28o0rlkwagb7T6LhY=.jpg",
+          "train/Apple rust leaf/apple-leaf-rust-and-cedar-apple-roestella-pirata-report-of-the-of-picture-id629456105?s=612x612.jpg -> train/Apple rust leaf/apple-leaf-rust-and-cedar-apple-roestella-pirata-report-of-the-of-picture-id629456105_s=612x612.jpg",
+          "train/Apple rust leaf/cedar_apple_rust_3.JPG?1362772840.jpg -> train/Apple rust leaf/cedar_apple_rust_3.JPG_1362772840.jpg",
+          "train/Bell_pepper leaf spot/IMG_6029-001_1500x1500%253E.JPG?1403119544.jpg -> train/Bell_pepper leaf spot/IMG_6029-001_1500x1500%253E.JPG_1403119544.jpg",
+          "train/Bell_pepper leaf spot/file.php?id=5336&t=1.jpg -> train/Bell_pepper leaf spot/file.php_id=5336&t=1.jpg",
+          "train/Bell_pepper leaf spot/image_1500x1500%253E.jpeg?1467983528.jpg -> train/Bell_pepper leaf spot/image_1500x1500%253E.jpeg_1467983528.jpg",
+          "train/Bell_pepper leaf spot/image_1500x1500%253E.jpeg?1472603885.jpg -> train/Bell_pepper leaf spot/image_1500x1500%253E.jpeg_1472603885.jpg",
+          "train/Bell_pepper leaf spot/image_300x300%2523.jpeg?1472603885.jpg -> train/Bell_pepper leaf spot/image_300x300%2523.jpeg_1472603885.jpg",
+          "train/Bell_pepper leaf spot/image_300x300%2523.jpeg?1472603886.jpg -> train/Bell_pepper leaf spot/image_300x300%2523.jpeg_1472603886.jpg",
+          "train/Bell_pepper leaf spot/image_original.jpeg?1472603885.jpg -> train/Bell_pepper leaf spot/image_original.jpeg_1472603885.jpg",
+          "train/Bell_pepper leaf spot/image_original.jpeg?1472603886.jpg -> train/Bell_pepper leaf spot/image_original.jpeg_1472603886.jpg",
+          "train/Bell_pepper leaf/DSCN5835_original.JPG?1472909566.jpg -> train/Bell_pepper leaf/DSCN5835_original.JPG_1472909566.jpg",
+          "train/Bell_pepper leaf/IMG_3891.JPG?1492073147.jpg -> train/Bell_pepper leaf/IMG_3891.JPG_1492073147.jpg",
+          "train/Bell_pepper leaf/file.php?id=18598&t=1.jpg -> train/Bell_pepper leaf/file.php_id=18598&t=1.jpg",
+          "train/Bell_pepper leaf/image_1500x1500%253E.jpeg?1472959493.jpg -> train/Bell_pepper leaf/image_1500x1500%253E.jpeg_1472959493.jpg",
+          "train/Blueberry leaf/Blueberry_Damage_1_original.JPG?1472642168.jpg -> train/Blueberry leaf/Blueberry_Damage_1_original.JPG_1472642168.jpg",
+          "train/Blueberry leaf/Blueberry_Damage_2_original.JPG?1431126657.jpg -> train/Blueberry leaf/Blueberry_Damage_2_original.JPG_1431126657.jpg",
+          "train/Blueberry leaf/IMG_0002_original.JPG?1500100269.jpg -> train/Blueberry leaf/IMG_0002_original.JPG_1500100269.jpg",
+          "train/Blueberry leaf/IMG_0017_original.JPG?1500100270.jpg -> train/Blueberry leaf/IMG_0017_original.JPG_1500100270.jpg",
+          "train/Blueberry leaf/image_1500x1500%253E.jpeg?1472756546.jpg -> train/Blueberry leaf/image_1500x1500%253E.jpeg_1472756546.jpg",
+          "train/Blueberry leaf/image_1500x1500%253E.jpeg?1472756548.jpg -> train/Blueberry leaf/image_1500x1500%253E.jpeg_1472756548.jpg",
+          "train/Cherry leaf/IMG_5892_original.JPG?1500348823.jpg -> train/Cherry leaf/IMG_5892_original.JPG_1500348823.jpg",
+          "train/Corn Gray leaf spot/7176752.jpeg?351.jpg -> train/Corn Gray leaf spot/7176752.jpeg_351.jpg",
+          "train/Corn Gray leaf spot/GetFile.aspx?guid=fb78e057-33b3-4901-b836-e08e45889f6f.jpg -> train/Corn Gray leaf spot/GetFile.aspx_guid=fb78e057-33b3-4901-b836-e08e45889f6f.jpg",
+          "train/Corn Gray leaf spot/IMG_0004.JPG?itok=tv_vWPMi.jpg -> train/Corn Gray leaf spot/IMG_0004.JPG_itok=tv_vWPMi.jpg",
+          "train/Corn leaf blight/2159_0.jpeg?itok=eBFRbolm.jpg -> train/Corn leaf blight/2159_0.jpeg_itok=eBFRbolm.jpg",
+          "train/Corn leaf blight/Southern-Corn-Leaf-Blight-USDA.ashx?w=770.jpg -> train/Corn leaf blight/Southern-Corn-Leaf-Blight-USDA.ashx_w=770.jpg",
+          "train/Corn leaf blight/image_1500x1500%253E.jpeg?1473988930.jpg -> train/Corn leaf blight/image_1500x1500%253E.jpeg_1473988930.jpg",
+          "train/Corn leaf blight/image_1500x1500%253E.jpeg?1473988931.jpg -> train/Corn leaf blight/image_1500x1500%253E.jpeg_1473988931.jpg",
+          "train/Corn leaf blight/show_picture.asp?id=aaaaaaaaaanoroz&w=524.jpg -> train/Corn leaf blight/show_picture.asp_id=aaaaaaaaaanoroz&w=524.jpg",
+          "train/Corn rust leaf/GetStoredImage?symbolicName=originalX19261YsiteXDTNYcatalogXcatalog%20&category=CMS.jpg -> train/Corn rust leaf/GetStoredImage_symbolicName=originalX19261YsiteXDTNYcatalogXcatalog%20&category=CMS.jpg",
+          "train/Corn rust leaf/Southern%20corn%20rust.ashx?w=600.jpg -> train/Corn rust leaf/Southern%20corn%20rust.ashx_w=600.jpg",
+          "train/Corn rust leaf/Southern-Corn-Rust.ashx?w=770.jpg -> train/Corn rust leaf/Southern-Corn-Rust.ashx_w=770.jpg",
+          "train/Corn rust leaf/corn-southern-rust-pustules.JPG?itok=VXIzyv8m.jpg -> train/Corn rust leaf/corn-southern-rust-pustules.JPG_itok=VXIzyv8m.jpg",
+          "train/Peach leaf/image_original.jpeg?1473123508.jpg -> train/Peach leaf/image_original.jpeg_1473123508.jpg",
+          "train/Potato leaf early blight/1421_0.jpeg?itok=FMtmgePj.jpg -> train/Potato leaf early blight/1421_0.jpeg_itok=FMtmgePj.jpg",
+          "train/Potato leaf early blight/Early%20Blight%20-%20Potatoes.ashx?w=350.jpg -> train/Potato leaf early blight/Early%20Blight%20-%20Potatoes.ashx_w=350.jpg",
+          "train/Raspberry leaf/IMG_7182_original.JPG?1493665266.jpg -> train/Raspberry leaf/IMG_7182_original.JPG_1493665266.jpg",
+          "train/Soyabean leaf/SOYBEANS_2_1500x1500%253E.JPG?1474027789.jpg -> train/Soyabean leaf/SOYBEANS_2_1500x1500%253E.JPG_1474027789.jpg",
+          "train/Soyabean leaf/close-up-shot-of-soy-leaves-glistening-in-the-sunshine-picture-id157639700?s=612x612.jpg -> train/Soyabean leaf/close-up-shot-of-soy-leaves-glistening-in-the-sunshine-picture-id157639700_s=612x612.jpg",
+          "train/Soyabean leaf/soybean-leaf-picture-id136581201?s=612x612.jpg -> train/Soyabean leaf/soybean-leaf-picture-id136581201_s=612x612.jpg",
+          "train/Squash Powdery mildew leaf/1846.400x400_4.jpeg?itok=845CLslG.jpg -> train/Squash Powdery mildew leaf/1846.400x400_4.jpeg_itok=845CLslG.jpg",
+          "train/Squash Powdery mildew leaf/file.php?id=16321&t=1.jpg -> train/Squash Powdery mildew leaf/file.php_id=16321&t=1.jpg",
+          "train/Strawberry leaf/green-strawberry-leaf-isolated-on-white-picture-id623362994?k=6&m=623362994&s=612x612&w=0&h=l350NQvVUUsLkRD1jOeEDnUledIWPjFXi86jd_Uv0OE=.jpg -> train/Strawberry leaf/green-strawberry-leaf-isolated-on-white-picture-id623362994_k=6&m=623362994&s=612x612&w=0&h=l350NQvVUUsLkRD1jOeEDnUledIWPjFXi86jd_Uv0OE=.jpg",
+          "train/Strawberry leaf/green-strawberry-leaf-isolated-on-white-picture-id654400974?k=6&m=654400974&s=612x612&w=0&h=x97U-8miyZxfXvAUVMbPGGj6_Lt-p35dVXiu1zuBt-Q=.jpg -> train/Strawberry leaf/green-strawberry-leaf-isolated-on-white-picture-id654400974_k=6&m=654400974&s=612x612&w=0&h=x97U-8miyZxfXvAUVMbPGGj6_Lt-p35dVXiu1zuBt-Q=.jpg",
+          "train/Strawberry leaf/green-strawberry-leaf-isolated-on-white-picture-id692328988?k=6&m=692328988&s=612x612&w=0&h=604VCrDe3mbN0c6LZZSBBvm4iMdWh1wcb3KHDX6CVRE=.jpg -> train/Strawberry leaf/green-strawberry-leaf-isolated-on-white-picture-id692328988_k=6&m=692328988&s=612x612&w=0&h=604VCrDe3mbN0c6LZZSBBvm4iMdWh1wcb3KHDX6CVRE=.jpg",
+          "train/Strawberry leaf/strawberry-leaf-isolated-on-white-background-picture-id487562700?k=6&m=487562700&s=612x612&w=0&h=uJYH7WuQOtfgoSp4EKzGuRPXoejL470Pkh_zMoIJYEs=.jpg -> train/Strawberry leaf/strawberry-leaf-isolated-on-white-background-picture-id487562700_k=6&m=487562700&s=612x612&w=0&h=uJYH7WuQOtfgoSp4EKzGuRPXoejL470Pkh_zMoIJYEs=.jpg",
+          "train/Tomato Early blight leaf/1058_0.jpeg?itok=OQkdtxgv.jpg -> train/Tomato Early blight leaf/1058_0.jpeg_itok=OQkdtxgv.jpg",
+          "train/Tomato Early blight leaf/Early_blight_1.jpg?1376579808.jpg -> train/Tomato Early blight leaf/Early_blight_1.jpg_1376579808.jpg",
+          "train/Tomato Early blight leaf/early%20blight%20%283%29.jpg?itok=UMYWI0xr.jpg -> train/Tomato Early blight leaf/early%20blight%20%283%29.jpg_itok=UMYWI0xr.jpg",
+          "train/Tomato Early blight leaf/early%20blight%20%284%29.jpg?itok=gfK5C193.jpg -> train/Tomato Early blight leaf/early%20blight%20%284%29.jpg_itok=gfK5C193.jpg",
+          "train/Tomato Septoria leaf spot/IMG_4452_1500x1500%253E.JPG?1407883119.jpg -> train/Tomato Septoria leaf spot/IMG_4452_1500x1500%253E.JPG_1407883119.jpg",
+          "train/Tomato Septoria leaf spot/TomatoDisease_IMG_2744_2016Jul01_original.JPG?1472858324.jpg -> train/Tomato Septoria leaf spot/TomatoDisease_IMG_2744_2016Jul01_original.JPG_1472858324.jpg",
+          "train/Tomato leaf bacterial spot/250?cb=20100819110637.jpg -> train/Tomato leaf bacterial spot/250_cb=20100819110637.jpg",
+          "train/Tomato leaf bacterial spot/Tomato2_original.JPG?1472597932.jpg -> train/Tomato leaf bacterial spot/Tomato2_original.JPG_1472597932.jpg",
+          "train/Tomato leaf bacterial spot/image3_original.JPG?1472755422.jpg -> train/Tomato leaf bacterial spot/image3_original.JPG_1472755422.jpg",
+          "train/Tomato leaf bacterial spot/image5_300x300%2523.JPG?1472755422.jpg -> train/Tomato leaf bacterial spot/image5_300x300%2523.JPG_1472755422.jpg",
+          "train/Tomato leaf bacterial spot/latest?cb=20100808132744.jpg -> train/Tomato leaf bacterial spot/latest_cb=20100808132744.jpg",
+          "train/Tomato leaf late blight/tomato-late-blight-sporulation-on-a-tomato-leaflet-picture-id81781370?s=612x612.jpg -> train/Tomato leaf late blight/tomato-late-blight-sporulation-on-a-tomato-leaflet-picture-id81781370_s=612x612.jpg",
+          "train/Tomato leaf yellow virus/latest?cb=20100719124603.jpg -> train/Tomato leaf yellow virus/latest_cb=20100719124603.jpg",
+          "train/Tomato leaf/single-a-green-leaf-of-tomato-picture-id496662675?k=6&m=496662675&s=612x612&w=0&h=6zKfv022H_9cLQSIR_kpcOAlTeg1eIVtLBbc80PQA7Y=.jpg -> train/Tomato leaf/single-a-green-leaf-of-tomato-picture-id496662675_k=6&m=496662675&s=612x612&w=0&h=6zKfv022H_9cLQSIR_kpcOAlTeg1eIVtLBbc80PQA7Y=.jpg",
+          "train/Tomato mold leaf/ArticleImage.aspx?imgid=4987.jpg -> train/Tomato mold leaf/ArticleImage.aspx_imgid=4987.jpg",
+          "train/Tomato mold leaf/black%20leaf%20mold%20%283%29.JPG?itok=u5TDHCSM.jpg -> train/Tomato mold leaf/black%20leaf%20mold%20%283%29.JPG_itok=u5TDHCSM.jpg",
+          "train/Tomato mold leaf/black%20leaf%20mold%20%284%29.JPG?itok=DIIUw9JU.jpg -> train/Tomato mold leaf/black%20leaf%20mold%20%284%29.JPG_itok=DIIUw9JU.jpg",
+          "train/Tomato mold leaf/latest?cb=20100723105221.jpg -> train/Tomato mold leaf/latest_cb=20100723105221.jpg",
+          "train/Tomato mold leaf/tomato-leaf-mold-infection-on-a-leaf-top-and-underside-picture-id81781575?s=612x612.jpg -> train/Tomato mold leaf/tomato-leaf-mold-infection-on-a-leaf-top-and-underside-picture-id81781575_s=612x612.jpg",
+          "train/Tomato mold leaf/tomato_plants_1_original.JPG?1407178095.jpg -> train/Tomato mold leaf/tomato_plants_1_original.JPG_1407178095.jpg",
+          "train/grape leaf black rot/IMG_0830_original.JPG?1472588083.jpg -> train/grape leaf black rot/IMG_0830_original.JPG_1472588083.jpg",
+          "train/grape leaf black rot/black%20spot%20%2819%29.JPG?itok=mf4II8zq.jpg -> train/grape leaf black rot/black%20spot%20%2819%29.JPG_itok=mf4II8zq.jpg",
+          "train/grape leaf black rot/image_original.jpeg?1495058317.jpg -> train/grape leaf black rot/image_original.jpeg_1495058317.jpg",
+          "train/grape leaf black rot/image_original.jpeg?1495058318.jpg -> train/grape leaf black rot/image_original.jpeg_1495058318.jpg",
+          "train/grape leaf/grape-leaf-isolated-cut-out-on-white-background-picture-id172320164?s=612x612.jpg -> train/grape leaf/grape-leaf-isolated-cut-out-on-white-background-picture-id172320164_s=612x612.jpg",
+          "train/grape leaf/grape-leaves-picture-id108483523?k=6&m=108483523&s=612x612&w=0&h=hBDI-YPeBffgjjZzbHsAaCfARsflsveT1NbcncLft5Y=.jpg -> train/grape leaf/grape-leaves-picture-id108483523_k=6&m=108483523&s=612x612&w=0&h=hBDI-YPeBffgjjZzbHsAaCfARsflsveT1NbcncLft5Y=.jpg",
+          "train/grape leaf/young-fresh-grape-leaf-picture-id183867740?k=6&m=183867740&s=612x612&w=0&h=Q8_s3Yw7p_VKQjda-mZPl9rN4lDmpVjjbMUk95HtVFk=.jpg -> train/grape leaf/young-fresh-grape-leaf-picture-id183867740_k=6&m=183867740&s=612x612&w=0&h=Q8_s3Yw7p_VKQjda-mZPl9rN4lDmpVjjbMUk95HtVFk=.jpg"
+        ]
+      }
+    },
+    "last_updated_utc": "2026-11-18T05:45:41.017104+00:00"
+  },
+  "cleaning": {
+    "generated_at_utc": "2026-11-18T05:48:13.199266+00:00",
+    "raw_files_modified": false,
+    "raw_files_deleted": false,
+    "total_scanned_files": 56954,
+    "total_valid_images": 56952,
+    "total_quarantined_files": 2,
+    "issue_breakdown": {
+      "missing_label": 1,
+      "unusual_aspect_ratio": 1
+    },
+    "by_dataset_source": {
+      "plantdoc": {
+        "total_files": 2573,
+        "valid_images": 2571,
+        "quarantined_files": 2,
+        "unmapped_classes": []
+      },
+      "plantvillage": {
+        "total_files": 54381,
+        "valid_images": 54381,
+        "quarantined_files": 0,
+        "unmapped_classes": []
+      }
+    },
+    "quarantine_directory": "ml/data/interim/quarantine",
+    "quarantined_samples": [
+      {
+        "dataset_source": "plantdoc",
+        "original_label": "",
+        "image_path": "ml/data/raw/plantdoc/PlantDoc-Dataset/PlantDoc_Examples.png",
+        "issues": [
+          "missing_label"
+        ],
+        "width": 1652,
+        "height": 464,
+        "file_size_bytes": 700316,
+        "quarantine_copy_path": "ml/data/interim/quarantine/plantdoc/missing_label/__PlantDoc_Examples.png"
+      },
+      {
+        "dataset_source": "plantdoc",
+        "original_label": "Potato leaf late blight",
+        "image_path": "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/cropped-symptom_potato_late_blight.jpg",
+        "issues": [
+          "unusual_aspect_ratio"
+        ],
+        "width": 940,
+        "height": 198,
+        "file_size_bytes": 41135,
+        "quarantine_copy_path": "ml/data/interim/quarantine/plantdoc/unusual_aspect_ratio/Potato leaf late blight__cropped-symptom_potato_late_blight.jpg"
+      }
+    ],
+    "duplicate_summary": {
+      "total_duplicate_clusters": 414,
+      "role_counts": {
+        "unique": 56121,
+        "primary": 414,
+        "exact_duplicate": 304,
+        "near_duplicate": 113
+      },
+      "by_dataset_source": {
+        "plantdoc": {
+          "total_valid": 2571,
+          "unique": 2443,
+          "primary_of_cluster": 63,
+          "exact_duplicates": 17,
+          "near_duplicates": 48
+        },
+        "plantvillage": {
+          "total_valid": 54381,
+          "unique": 53678,
+          "primary_of_cluster": 351,
+          "exact_duplicates": 287,
+          "near_duplicates": 65
+        }
+      },
+      "cross_dataset_duplicate_clusters_count": 0,
+      "cross_label_duplicate_clusters_count": 31
+    }
+  },
+  "exploration": {
+    "generated_at_utc": "2026-11-18T05:50:49.380214+00:00",
+    "total_valid_images_all_sources": 56952,
+    "by_dataset_source": {
+      "plantdoc": {
+        "total_valid_images": 2571,
+        "num_plant_species": 13,
+        "plant_species": [
+          "Apple",
+          "Blueberry",
+          "Cherry",
+          "Corn (Maize)",
+          "Grape",
+          "Peach",
+          "Pepper (Bell)",
+          "Potato",
+          "Raspberry",
+          "Soybean",
+          "Squash",
+          "Strawberry",
+          "Tomato"
+        ],
+        "num_total_classes": 28,
+        "num_healthy_classes": 10,
+        "num_diseased_classes": 18,
+        "min_images_per_class": 2,
+        "max_images_per_class": 191,
+        "median_images_per_class": 91.0,
+        "imbalance_ratio_max_over_min": 95.5,
+        "avg_width": 1062.73,
+        "avg_height": 916.45,
+        "min_width": 115,
+        "max_width": 6000,
+        "min_height": 69,
+        "max_height": 6000,
+        "image_formats": {
+          "JPEG": 2564,
+          "PNG": 5,
+          "MPO": 2
+        },
+        "color_modes": {
+          "RGB": 2560,
+          "CMYK": 5,
+          "RGBA": 5,
+          "L": 1
+        }
+      },
+      "plantvillage": {
+        "total_valid_images": 54381,
+        "num_plant_species": 14,
+        "plant_species": [
+          "Apple",
+          "Blueberry",
+          "Cherry",
+          "Corn (Maize)",
+          "Grape",
+          "Orange (Citrus)",
+          "Peach",
+          "Pepper (Bell)",
+          "Potato",
+          "Raspberry",
+          "Soybean",
+          "Squash",
+          "Strawberry",
+          "Tomato"
+        ],
+        "num_total_classes": 38,
+        "num_healthy_classes": 12,
+        "num_diseased_classes": 26,
+        "min_images_per_class": 152,
+        "max_images_per_class": 5507,
+        "median_images_per_class": 1092.5,
+        "imbalance_ratio_max_over_min": 36.23,
+        "avg_width": 256.0,
+        "avg_height": 256.0,
+        "min_width": 256,
+        "max_width": 256,
+        "min_height": 256,
+        "max_height": 256,
+        "image_formats": {
+          "JPEG": 54381
+        },
+        "color_modes": {
+          "RGB": 54381
+        }
+      }
+    }
+  },
+  "duplicates": {
+    "generated_at_utc": "2026-11-18T05:50:43.251766+00:00",
+    "parameters": {
+      "exact_hash": "sha256 (file + decoded RGB pixels)",
+      "perceptual_hashes": "64-bit pHash (DCT) + 64-bit dHash",
+      "phash_hamming_threshold": 4,
+      "dhash_confirm_threshold": 6
+    },
+    "total_valid_images_analyzed": 56952,
+    "total_duplicate_clusters": 414,
+    "clusters_with_exact_duplicates": 304,
+    "clusters_near_duplicate_only": 110,
+    "role_counts": {
+      "unique": 56121,
+      "primary": 414,
+      "exact_duplicate": 304,
+      "near_duplicate": 113
+    },
+    "by_dataset_source": {
+      "plantdoc": {
+        "total_valid": 2571,
+        "unique": 2443,
+        "primary_of_cluster": 63,
+        "exact_duplicates": 17,
+        "near_duplicates": 48
+      },
+      "plantvillage": {
+        "total_valid": 54381,
+        "unique": 53678,
+        "primary_of_cluster": 351,
+        "exact_duplicates": 287,
+        "near_duplicates": 65
+      }
+    },
+    "cross_dataset_duplicate_clusters_count": 0,
+    "cross_dataset_duplicate_clusters_sample": [],
+    "cross_label_duplicate_clusters_count": 31,
+    "cross_label_duplicate_clusters_sample": [
+      {
+        "group_id": "DUP_00353",
+        "size": 2,
+        "labels": [
+          "corn__cercospora_gray_leaf_spot",
+          "corn__northern_leaf_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Corn Gray leaf spot/IMG_42231.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn leaf blight/IMG_42231.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00354",
+        "size": 2,
+        "labels": [
+          "corn__cercospora_gray_leaf_spot",
+          "corn__northern_leaf_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Corn leaf blight/2015070295153021.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot/2015070295153021.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00355",
+        "size": 2,
+        "labels": [
+          "corn__cercospora_gray_leaf_spot",
+          "corn__northern_leaf_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Corn leaf blight/corn-gray-leaf-spot-f4.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot/corn-gray-leaf-spot-f4.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00356",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf early blight/backus-056-potato-blight.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/backus-056-potato-blight.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00357",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "tomato__early_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf early blight/earlyblightpotato.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/earlyblightpotato.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00358",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight/1421_0.jpeg_itok=FMtmgePj.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/1421_0.jpeg_itok=FMtmgePj.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00359",
+        "size": 3,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight",
+          "tomato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight/5816740026_d42ef24413_Phytophthora-Infestans.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/5816740026_d42ef24413_Phytophthora-Infestans.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/tomato-late-blight-foliar-lesions_Scot-Nelson_CC-BY-SA-2.0.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00360",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Potato leaf late blight/irish-blight-symptoms-on-potato-leaves-atmf8b.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/irish-blight-symptoms-on-potato-leaves-atmf8b.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00362",
+        "size": 2,
+        "labels": [
+          "tomato__bacterial_spot",
+          "tomato__septoria_leaf_spot"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/test/Tomato leaf bacterial spot/tomato_V8.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Septoria leaf spot/tomato_V8.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00371",
+        "size": 2,
+        "labels": [
+          "pepper_bell__bacterial_spot",
+          "tomato__septoria_leaf_spot"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Bell_pepper leaf spot/Septoria-leaf-spot.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Septoria leaf spot/tomato-blight-treatment-blight.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00372",
+        "size": 2,
+        "labels": [
+          "corn__cercospora_gray_leaf_spot",
+          "corn__northern_leaf_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn Gray leaf spot/gls99-anamosa.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Corn leaf blight/gls99-anamosa-400x334.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00379",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/14321627273_58d893c3e2_potato-plant.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/14321627273_58d893c3e2_b.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00380",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/18028_1.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/24064_1.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00381",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "tomato__early_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/2OBH_29_Gardening_early_blight.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/Early_Blight_of_Tomato1687.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00382",
+        "size": 3,
+        "labels": [
+          "potato__early_blight",
+          "tomato__early_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/36-early-blight-concentric-rings.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/EBTomato.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/tomatoblight.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00383",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "potato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/45035_1.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf late blight/Late+blight+on+potato.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00384",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "tomato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/backus-045-potato-blight.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/a7710b5901ba1f8e9759ef7576cd9f09.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00385",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "tomato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/Blght.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/LBleaf2INIA_0.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00386",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "tomato__early_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/early-blight-closeup-NCSU.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato Early blight leaf/early-blight-closeup-sm.jpg"
+        ]
+      },
+      {
+        "group_id": "DUP_00387",
+        "size": 2,
+        "labels": [
+          "potato__early_blight",
+          "tomato__late_blight"
+        ],
+        "paths": [
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Potato leaf early blight/Early-Blight-Leaves-56a348bf3df78cf7727cb35e.jpg",
+          "ml/data/raw/plantdoc/PlantDoc-Dataset/train/Tomato leaf late blight/Pest2369.jpg"
+        ]
+      }
+    ],
+    "candidate_hash_pairs_checked": 4803868
+  },
+  "splitting": {
+    "generated_at_utc": "2026-11-18T05:50:59.394508+00:00",
+    "random_seed": 42,
+    "target_ratios": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15
+    },
+    "actual_core_ratios_pct": {
+      "train": 69.96,
+      "validation": 15.02,
+      "test": 15.02
+    },
+    "split_counts": {
+      "train": 37844,
+      "validation": 8127,
+      "test": 8123,
+      "external_plantdoc": 2554,
+      "excluded_exact_duplicate": 304,
+      "quarantined": 2
+    },
+    "insufficient_classes": [],
+    "leakage_verification": {
+      "all_checks_passed": true,
+      "checks": {
+        "image_path": {
+          "passed": true,
+          "overlaps": {
+            "train_vs_validation": 0,
+            "train_vs_test": 0,
+            "validation_vs_test": 0
+          }
+        },
+        "file_sha256": {
+          "passed": true,
+          "overlaps": {
+            "train_vs_validation": 0,
+            "train_vs_test": 0,
+            "validation_vs_test": 0
+          }
+        },
+        "pixel_sha256": {
+          "passed": true,
+          "overlaps": {
+            "train_vs_validation": 0,
+            "train_vs_test": 0,
+            "validation_vs_test": 0
+          }
+        },
+        "duplicate_group_id": {
+          "passed": true,
+          "overlaps": {
+            "train_vs_validation": 0,
+            "train_vs_test": 0,
+            "validation_vs_test": 0
+          }
+        },
+        "external_plantdoc_vs_plantvillage_groups": {
+          "passed": true,
+          "overlap_count": 0
+        }
+      }
+    }
+  },
+  "preprocessing": {
+    "generated_at_utc": "2026-11-18T05:52:19.431973+00:00",
+    "target_dimensions": [
+      224,
+      224
+    ],
+    "color_mode": "RGB",
+    "preserve_aspect_ratio": true,
+    "padding_mode": "constant",
+    "padding_fill_rgb": [
+      124,
+      116,
+      104
+    ],
+    "offline_augmentation_applied": false,
+    "train_only_online_augmentation_configured": true,
+    "processed_counts_by_split": {
+      "validation": 8127,
+      "external_plantdoc": 2554,
+      "train": 37844,
+      "test": 8123
+    },
+    "total_processed_images": 56648
+  },
+  "train_rgb_statistics": {
+    "computed": true,
+    "split_used": "train_only",
+    "images_sampled": 4000,
+    "total_train_images": 37844,
+    "rgb_mean": [
+      0.468,
+      0.4909,
+      0.4117
+    ],
+    "rgb_std": [
+      0.1956,
+      0.1708,
+      0.2129
+    ]
+  }
+}

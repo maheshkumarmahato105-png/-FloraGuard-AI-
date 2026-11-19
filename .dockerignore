@@ -1,5 +1,5 @@
 # ==============================================================================
-# FloraGuard AI — .dockerignore
+# PlantDiseaseAI — .dockerignore
 # Excludes local environments, datasets, cache, and raw files from container builds
 # ==============================================================================
 
@@ -17,13 +17,15 @@ __pycache__/
 .coverage
 htmlcov/
 
-# Datasets (model is pre-trained; raw datasets not needed in production container)
-dataset/raw/
-dataset/splits/
-dataset/metadata.csv
+# Node.js
+frontend/node_modules/
+frontend/.vite/
 
-# Subdirectory separate research repo
-PlantDiseaseAI/
+# Datasets (never bundle 50k+ raw training images into production container)
+ml/data/raw/
+ml/data/interim/
+ml/data/processed/
+ml/data/metadata/*_manifest.csv
 
 # Git & IDE
 .git/
@@ -39,8 +41,7 @@ Desktop.ini
 
 # Logs & temp files
 *.log
-uploads/*.jpg
-uploads/*.png
-uploads/*.jpeg
-uploads/*.webp
-!uploads/.gitkeep
+backend/runtime/plantdiseaseai.db
+backend/runtime/*.jpg
+backend/runtime/*.png
+backend/runtime/*.webp

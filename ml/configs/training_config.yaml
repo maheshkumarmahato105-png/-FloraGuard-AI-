@@ -1,0 +1,67 @@
+# ==============================================================================
+# PlantDiseaseAI — Phase 4 Training & Optimization Configuration
+# ==============================================================================
+
+seed: 42
+
+paths:
+  dataset_config: "ml/configs/dataset_config.yaml"
+  model_config: "ml/configs/model_config.yaml"
+  split_manifest: "ml/data/metadata/split_manifest.csv"
+  dataset_sources: "ml/data/metadata/dataset_sources.json"
+  logs_dir: "ml/experiments/logs"
+  checkpoints_dir: "ml/experiments/checkpoints"
+  results_dir: "ml/experiments/results"
+  charts_dir: "ml/reports/charts"
+  training_report: "ml/reports/training_report.md"
+
+data:
+  use_processed_images: true   # Reads Phase 2 deterministic 224x224 RGB letterbox images
+  batch_size: 16               # Conservative initial batch size for 8 GB laptop GPU safety
+  eval_batch_size: 32
+  num_workers: 4
+  pin_memory: true             # Enabled automatically only when CUDA is active
+  drop_last_train: false
+  use_weighted_sampler: false  # Do not combine blindly with class_weighting in loss
+
+training:
+  epochs: 30
+  device: "auto"               # auto | cuda | cpu
+  use_amp: true                # Automatic Mixed Precision on CUDA (auto-disabled on CPU)
+  grad_clip_norm: 1.0          # Optional gradient norm clipping (null to disable)
+  non_blocking_transfer: true
+  log_interval_batches: 50
+
+optimizer:
+  name: "adamw"
+  lr: 0.001
+  weight_decay: 0.0001
+  betas: [0.9, 0.999]
+
+scheduler:
+  name: "cosine_annealing"     # cosine_annealing | reduce_on_plateau | step | none
+  eta_min: 0.000001
+  plateau_factor: 0.5
+  plateau_patience: 3
+  step_size: 10
+  step_gamma: 0.5
+
+loss:
+  name: "cross_entropy"
+  class_weighting: "inverse_sqrt"  # none | inverse_frequency | inverse_sqrt
+  class_weight_min: 0.5
+  class_weight_max: 3.0
+  label_smoothing: 0.0             # Optional configurable experiment (e.g., 0.05)
+
+early_stopping:
+  enabled: true
+  monitor: "val_macro_f1"
+  mode: "max"
+  patience: 8
+  min_delta: 0.0001
+
+checkpointing:
+  save_best_metric: "val_macro_f1"
+  save_latest: true
+  save_best: true
+  allow_overwrite: false       # Require explicit --overwrite or --resume before replacing existing checkpoints

@@ -1,0 +1,88 @@
+{
+  "generated_at_utc": "2026-11-18T05:50:49.380214+00:00",
+  "total_valid_images_all_sources": 56952,
+  "by_dataset_source": {
+    "plantdoc": {
+      "total_valid_images": 2571,
+      "num_plant_species": 13,
+      "plant_species": [
+        "Apple",
+        "Blueberry",
+        "Cherry",
+        "Corn (Maize)",
+        "Grape",
+        "Peach",
+        "Pepper (Bell)",
+        "Potato",
+        "Raspberry",
+        "Soybean",
+        "Squash",
+        "Strawberry",
+        "Tomato"
+      ],
+      "num_total_classes": 28,
+      "num_healthy_classes": 10,
+      "num_diseased_classes": 18,
+      "min_images_per_class": 2,
+      "max_images_per_class": 191,
+      "median_images_per_class": 91.0,
+      "imbalance_ratio_max_over_min": 95.5,
+      "avg_width": 1062.73,
+      "avg_height": 916.45,
+      "min_width": 115,
+      "max_width": 6000,
+      "min_height": 69,
+      "max_height": 6000,
+      "image_formats": {
+        "JPEG": 2564,
+        "PNG": 5,
+        "MPO": 2
+      },
+      "color_modes": {
+        "RGB": 2560,
+        "CMYK": 5,
+        "RGBA": 5,
+        "L": 1
+      }
+    },
+    "plantvillage": {
+      "total_valid_images": 54381,
+      "num_plant_species": 14,
+      "plant_species": [
+        "Apple",
+        "Blueberry",
+        "Cherry",
+        "Corn (Maize)",
+        "Grape",
+        "Orange (Citrus)",
+        "Peach",
+        "Pepper (Bell)",
+        "Potato",
+        "Raspberry",
+        "Soybean",
+        "Squash",
+        "Strawberry",
+        "Tomato"
+      ],
+      "num_total_classes": 38,
+      "num_healthy_classes": 12,
+      "num_diseased_classes": 26,
+      "min_images_per_class": 152,
+      "max_images_per_class": 5507,
+      "median_images_per_class": 1092.5,
+      "imbalance_ratio_max_over_min": 36.23,
+      "avg_width": 256.0,
+      "avg_height": 256.0,
+      "min_width": 256,
+      "max_width": 256,
+      "min_height": 256,
+      "max_height": 256,
+      "image_formats": {
+        "JPEG": 54381
+      },
+      "color_modes": {
+        "RGB": 54381
+      }
+    }
+  }
+}

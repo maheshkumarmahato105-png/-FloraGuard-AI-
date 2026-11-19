@@ -1,0 +1,16 @@
+# PlantDiseaseAI — Phase 7 FastAPI Backend Dependencies
+# Install inside PlantDiseaseAI/.venv (after installing PyTorch CUDA wheel):
+#   uv pip install --python .venv\Scripts\python.exe -r backend/app/requirements.txt
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.9.0
+python-multipart>=0.0.12
+python-dotenv>=1.0.1
+sqlalchemy>=2.0.35
+opencv-python>=4.10.0
+pillow>=10.4.0
+numpy>=1.26.4
+pyyaml>=6.0.2
+httpx>=0.27.0
+pytest>=8.3.0

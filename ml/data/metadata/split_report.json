@@ -1,0 +1,64 @@
+{
+  "generated_at_utc": "2026-11-18T05:50:59.394508+00:00",
+  "random_seed": 42,
+  "target_ratios": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "actual_core_ratios_pct": {
+    "train": 69.96,
+    "validation": 15.02,
+    "test": 15.02
+  },
+  "split_counts": {
+    "train": 37844,
+    "validation": 8127,
+    "test": 8123,
+    "external_plantdoc": 2554,
+    "excluded_exact_duplicate": 304,
+    "quarantined": 2
+  },
+  "insufficient_classes": [],
+  "leakage_verification": {
+    "all_checks_passed": true,
+    "checks": {
+      "image_path": {
+        "passed": true,
+        "overlaps": {
+          "train_vs_validation": 0,
+          "train_vs_test": 0,
+          "validation_vs_test": 0
+        }
+      },
+      "file_sha256": {
+        "passed": true,
+        "overlaps": {
+          "train_vs_validation": 0,
+          "train_vs_test": 0,
+          "validation_vs_test": 0
+        }
+      },
+      "pixel_sha256": {
+        "passed": true,
+        "overlaps": {
+          "train_vs_validation": 0,
+          "train_vs_test": 0,
+          "validation_vs_test": 0
+        }
+      },
+      "duplicate_group_id": {
+        "passed": true,
+        "overlaps": {
+          "train_vs_validation": 0,
+          "train_vs_test": 0,
+          "validation_vs_test": 0
+        }
+      },
+      "external_plantdoc_vs_plantvillage_groups": {
+        "passed": true,
+        "overlap_count": 0
+      }
+    }
+  }
+}

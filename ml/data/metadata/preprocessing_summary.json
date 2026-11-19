@@ -1,0 +1,24 @@
+{
+  "generated_at_utc": "2026-11-18T05:52:19.431973+00:00",
+  "target_dimensions": [
+    224,
+    224
+  ],
+  "color_mode": "RGB",
+  "preserve_aspect_ratio": true,
+  "padding_mode": "constant",
+  "padding_fill_rgb": [
+    124,
+    116,
+    104
+  ],
+  "offline_augmentation_applied": false,
+  "train_only_online_augmentation_configured": true,
+  "processed_counts_by_split": {
+    "validation": 8127,
+    "external_plantdoc": 2554,
+    "train": 37844,
+    "test": 8123
+  },
+  "total_processed_images": 56648
+}

@@ -1,0 +1,327 @@
+# ==============================================================================
+# PlantDiseaseAI — Verified Cross-Dataset Class Mapping Taxonomy
+# Preserves original labels and dataset attribution while defining verified
+# canonical classes across PlantVillage (primary) and PlantDoc (external eval).
+#
+# Policy:
+#   - PlantVillage (38 classes) defines the primary canonical classification taxonomy.
+#   - PlantDoc (28 folders in Pratikkayal/PlantDoc-Dataset) is mapped with explicit
+#     verification notes and kept strictly separate as an external evaluation set.
+#   - PlantSeg is reserved for future pixel-level segmentation research and is NOT
+#     merged into classification splits.
+# ==============================================================================
+
+schema_version: "1.0"
+
+canonical_classes:
+  apple__apple_scab:
+    plant_species: "Apple"
+    disease_label: "Apple Scab"
+    is_healthy: false
+  apple__black_rot:
+    plant_species: "Apple"
+    disease_label: "Black Rot"
+    is_healthy: false
+  apple__cedar_apple_rust:
+    plant_species: "Apple"
+    disease_label: "Cedar Apple Rust"
+    is_healthy: false
+  apple__healthy:
+    plant_species: "Apple"
+    disease_label: "Healthy"
+    is_healthy: true
+  blueberry__healthy:
+    plant_species: "Blueberry"
+    disease_label: "Healthy"
+    is_healthy: true
+  cherry__healthy:
+    plant_species: "Cherry"
+    disease_label: "Healthy"
+    is_healthy: true
+  cherry__powdery_mildew:
+    plant_species: "Cherry"
+    disease_label: "Powdery Mildew"
+    is_healthy: false
+  corn__cercospora_gray_leaf_spot:
+    plant_species: "Corn (Maize)"
+    disease_label: "Cercospora Leaf Spot (Gray Leaf Spot)"
+    is_healthy: false
+  corn__common_rust:
+    plant_species: "Corn (Maize)"
+    disease_label: "Common Rust"
+    is_healthy: false
+  corn__healthy:
+    plant_species: "Corn (Maize)"
+    disease_label: "Healthy"
+    is_healthy: true
+  corn__northern_leaf_blight:
+    plant_species: "Corn (Maize)"
+    disease_label: "Northern Leaf Blight"
+    is_healthy: false
+  grape__black_rot:
+    plant_species: "Grape"
+    disease_label: "Black Rot"
+    is_healthy: false
+  grape__esca_black_measles:
+    plant_species: "Grape"
+    disease_label: "Esca (Black Measles)"
+    is_healthy: false
+  grape__healthy:
+    plant_species: "Grape"
+    disease_label: "Healthy"
+    is_healthy: true
+  grape__leaf_blight_isariopsis:
+    plant_species: "Grape"
+    disease_label: "Leaf Blight (Isariopsis Leaf Spot)"
+    is_healthy: false
+  orange__huanglongbing_citrus_greening:
+    plant_species: "Orange (Citrus)"
+    disease_label: "Huanglongbing (Citrus Greening)"
+    is_healthy: false
+  peach__bacterial_spot:
+    plant_species: "Peach"
+    disease_label: "Bacterial Spot"
+    is_healthy: false
+  peach__healthy:
+    plant_species: "Peach"
+    disease_label: "Healthy"
+    is_healthy: true
+  pepper_bell__bacterial_spot:
+    plant_species: "Pepper (Bell)"
+    disease_label: "Bacterial Spot"
+    is_healthy: false
+  pepper_bell__healthy:
+    plant_species: "Pepper (Bell)"
+    disease_label: "Healthy"
+    is_healthy: true
+  potato__early_blight:
+    plant_species: "Potato"
+    disease_label: "Early Blight"
+    is_healthy: false
+  potato__healthy:
+    plant_species: "Potato"
+    disease_label: "Healthy"
+    is_healthy: true
+  potato__late_blight:
+    plant_species: "Potato"
+    disease_label: "Late Blight"
+    is_healthy: false
+  raspberry__healthy:
+    plant_species: "Raspberry"
+    disease_label: "Healthy"
+    is_healthy: true
+  soybean__healthy:
+    plant_species: "Soybean"
+    disease_label: "Healthy"
+    is_healthy: true
+  squash__powdery_mildew:
+    plant_species: "Squash"
+    disease_label: "Powdery Mildew"
+    is_healthy: false
+  strawberry__healthy:
+    plant_species: "Strawberry"
+    disease_label: "Healthy"
+    is_healthy: true
+  strawberry__leaf_scorch:
+    plant_species: "Strawberry"
+    disease_label: "Leaf Scorch"
+    is_healthy: false
+  tomato__bacterial_spot:
+    plant_species: "Tomato"
+    disease_label: "Bacterial Spot"
+    is_healthy: false
+  tomato__early_blight:
+    plant_species: "Tomato"
+    disease_label: "Early Blight"
+    is_healthy: false
+  tomato__healthy:
+    plant_species: "Tomato"
+    disease_label: "Healthy"
+    is_healthy: true
+  tomato__late_blight:
+    plant_species: "Tomato"
+    disease_label: "Late Blight"
+    is_healthy: false
+  tomato__leaf_mold:
+    plant_species: "Tomato"
+    disease_label: "Leaf Mold"
+    is_healthy: false
+  tomato__septoria_leaf_spot:
+    plant_species: "Tomato"
+    disease_label: "Septoria Leaf Spot"
+    is_healthy: false
+  tomato__spider_mites_two_spotted:
+    plant_species: "Tomato"
+    disease_label: "Spider Mites (Two-Spotted Spider Mite)"
+    is_healthy: false
+  tomato__target_spot:
+    plant_species: "Tomato"
+    disease_label: "Target Spot"
+    is_healthy: false
+  tomato__tomato_mosaic_virus:
+    plant_species: "Tomato"
+    disease_label: "Tomato Mosaic Virus"
+    is_healthy: false
+  tomato__tomato_yellow_leaf_curl_virus:
+    plant_species: "Tomato"
+    disease_label: "Tomato Yellow Leaf Curl Virus"
+    is_healthy: false
+
+source_mappings:
+  plantvillage:
+    "Apple__Apple_scab": {canonical_class: "apple__apple_scab", compatible_with_primary: true}
+    "Apple___Apple_scab": {canonical_class: "apple__apple_scab", compatible_with_primary: true}
+    "Apple__Black_rot": {canonical_class: "apple__black_rot", compatible_with_primary: true}
+    "Apple___Black_rot": {canonical_class: "apple__black_rot", compatible_with_primary: true}
+    "Apple__Cedar_apple_rust": {canonical_class: "apple__cedar_apple_rust", compatible_with_primary: true}
+    "Apple___Cedar_apple_rust": {canonical_class: "apple__cedar_apple_rust", compatible_with_primary: true}
+    "Apple___healthy": {canonical_class: "apple__healthy", compatible_with_primary: true}
+    "Blueberry___healthy": {canonical_class: "blueberry__healthy", compatible_with_primary: true}
+    "Cherry_(including_sour)___healthy": {canonical_class: "cherry__healthy", compatible_with_primary: true}
+    "Cherry_(including_sour)___Powdery_mildew": {canonical_class: "cherry__powdery_mildew", compatible_with_primary: true}
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {canonical_class: "corn__cercospora_gray_leaf_spot", compatible_with_primary: true}
+    "Corn_(maize)___Common_rust_": {canonical_class: "corn__common_rust", compatible_with_primary: true}
+    "Corn_(maize)___healthy": {canonical_class: "corn__healthy", compatible_with_primary: true}
+    "Corn_(maize)___Northern_Leaf_Blight": {canonical_class: "corn__northern_leaf_blight", compatible_with_primary: true}
+    "Grape___Black_rot": {canonical_class: "grape__black_rot", compatible_with_primary: true}
+    "Grape___Esca_(Black_Measles)": {canonical_class: "grape__esca_black_measles", compatible_with_primary: true}
+    "Grape___healthy": {canonical_class: "grape__healthy", compatible_with_primary: true}
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {canonical_class: "grape__leaf_blight_isariopsis", compatible_with_primary: true}
+    "Orange___Haunglongbing_(Citrus_greening)": {canonical_class: "orange__huanglongbing_citrus_greening", compatible_with_primary: true}
+    "Peach___Bacterial_spot": {canonical_class: "peach__bacterial_spot", compatible_with_primary: true}
+    "Peach___healthy": {canonical_class: "peach__healthy", compatible_with_primary: true}
+    "Pepper,_bell___Bacterial_spot": {canonical_class: "pepper_bell__bacterial_spot", compatible_with_primary: true}
+    "Pepper,_bell___healthy": {canonical_class: "pepper_bell__healthy", compatible_with_primary: true}
+    "Potato___Early_blight": {canonical_class: "potato__early_blight", compatible_with_primary: true}
+    "Potato___healthy": {canonical_class: "potato__healthy", compatible_with_primary: true}
+    "Potato___Late_blight": {canonical_class: "potato__late_blight", compatible_with_primary: true}
+    "Raspberry___healthy": {canonical_class: "raspberry__healthy", compatible_with_primary: true}
+    "Soybean___healthy": {canonical_class: "soybean__healthy", compatible_with_primary: true}
+    "Squash___Powdery_mildew": {canonical_class: "squash__powdery_mildew", compatible_with_primary: true}
+    "Strawberry___healthy": {canonical_class: "strawberry__healthy", compatible_with_primary: true}
+    "Strawberry___Leaf_scorch": {canonical_class: "strawberry__leaf_scorch", compatible_with_primary: true}
+    "Tomato___Bacterial_spot": {canonical_class: "tomato__bacterial_spot", compatible_with_primary: true}
+    "Tomato___Early_blight": {canonical_class: "tomato__early_blight", compatible_with_primary: true}
+    "Tomato___healthy": {canonical_class: "tomato__healthy", compatible_with_primary: true}
+    "Tomato___Late_blight": {canonical_class: "tomato__late_blight", compatible_with_primary: true}
+    "Tomato___Leaf_Mold": {canonical_class: "tomato__leaf_mold", compatible_with_primary: true}
+    "Tomato___Septoria_leaf_spot": {canonical_class: "tomato__septoria_leaf_spot", compatible_with_primary: true}
+    "Tomato___Spider_mites Two-spotted_spider_mite": {canonical_class: "tomato__spider_mites_two_spotted", compatible_with_primary: true}
+    "Tomato___Target_Spot": {canonical_class: "tomato__target_spot", compatible_with_primary: true}
+    "Tomato___Tomato_mosaic_virus": {canonical_class: "tomato__tomato_mosaic_virus", compatible_with_primary: true}
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {canonical_class: "tomato__tomato_yellow_leaf_curl_virus", compatible_with_primary: true}
+
+  plantdoc:
+    # Verified against Singh et al. (2020) PlantDoc taxonomy; kept strictly in external_plantdoc split
+    "Apple leaf":
+      canonical_class: "apple__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy apple leaf class"
+    "Apple rust leaf":
+      canonical_class: "apple__cedar_apple_rust"
+      compatible_with_primary: true
+      notes: "Mapped per PlantDoc paper (Cedar Apple Rust)"
+    "Apple Scab Leaf":
+      canonical_class: "apple__apple_scab"
+      compatible_with_primary: true
+      notes: "Direct match to Apple Scab"
+    "Bell_pepper leaf":
+      canonical_class: "pepper_bell__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy bell pepper leaf class"
+    "Bell_pepper leaf spot":
+      canonical_class: "pepper_bell__bacterial_spot"
+      compatible_with_primary: true
+      notes: "Mapped per PlantDoc paper (Bell Pepper Bacterial Spot)"
+    "Blueberry leaf":
+      canonical_class: "blueberry__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy blueberry leaf class"
+    "Cherry leaf":
+      canonical_class: "cherry__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy cherry leaf class"
+    "Corn Gray leaf spot":
+      canonical_class: "corn__cercospora_gray_leaf_spot"
+      compatible_with_primary: true
+      notes: "Direct match to Corn Gray Leaf Spot"
+    "Corn leaf blight":
+      canonical_class: "corn__northern_leaf_blight"
+      compatible_with_primary: true
+      notes: "Mapped per PlantDoc paper (Corn Northern Leaf Blight)"
+    "Corn rust leaf":
+      canonical_class: "corn__common_rust"
+      compatible_with_primary: true
+      notes: "Direct match to Corn Common Rust"
+    "grape leaf":
+      canonical_class: "grape__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy grape leaf class"
+    "grape leaf black rot":
+      canonical_class: "grape__black_rot"
+      compatible_with_primary: true
+      notes: "Direct match to Grape Black Rot"
+    "Peach leaf":
+      canonical_class: "peach__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy peach leaf class"
+    "Potato leaf early blight":
+      canonical_class: "potato__early_blight"
+      compatible_with_primary: true
+      notes: "Direct match to Potato Early Blight"
+    "Potato leaf late blight":
+      canonical_class: "potato__late_blight"
+      compatible_with_primary: true
+      notes: "Direct match to Potato Late Blight"
+    "Raspberry leaf":
+      canonical_class: "raspberry__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy raspberry leaf class"
+    "Soyabean leaf":
+      canonical_class: "soybean__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy soybean leaf class (original spelling: Soyabean)"
+    "Squash Powdery mildew leaf":
+      canonical_class: "squash__powdery_mildew"
+      compatible_with_primary: true
+      notes: "Direct match to Squash Powdery Mildew"
+    "Strawberry leaf":
+      canonical_class: "strawberry__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy strawberry leaf class"
+    "Tomato Early blight leaf":
+      canonical_class: "tomato__early_blight"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Early Blight"
+    "Tomato leaf":
+      canonical_class: "tomato__healthy"
+      compatible_with_primary: true
+      notes: "PlantDoc healthy tomato leaf class"
+    "Tomato leaf bacterial spot":
+      canonical_class: "tomato__bacterial_spot"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Bacterial Spot"
+    "Tomato leaf late blight":
+      canonical_class: "tomato__late_blight"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Late Blight"
+    "Tomato leaf mosaic virus":
+      canonical_class: "tomato__tomato_mosaic_virus"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Mosaic Virus"
+    "Tomato leaf yellow virus":
+      canonical_class: "tomato__tomato_yellow_leaf_curl_virus"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Yellow Leaf Curl Virus"
+    "Tomato mold leaf":
+      canonical_class: "tomato__leaf_mold"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Leaf Mold"
+    "Tomato Septoria leaf spot":
+      canonical_class: "tomato__septoria_leaf_spot"
+      compatible_with_primary: true
+      notes: "Direct match to Tomato Septoria Leaf Spot"
+    "Tomato two spotted spider mites leaf":
+      canonical_class: "tomato__spider_mites_two_spotted"
+      compatible_with_primary: true
+      notes: "Present only in PlantDoc train/ folder (very low count); keep isolated in external_plantdoc"

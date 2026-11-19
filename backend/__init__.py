@@ -1,1 +1,1 @@
-"""Backend package initializer."""
+"""PlantDiseaseAI backend package."""

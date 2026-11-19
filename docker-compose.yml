@@ -1,27 +1,26 @@
 services:
-  floraguard-app:
+  plantdiseaseai-web:
     build:
       context: .
       dockerfile: Dockerfile
-    image: floraguard-ai:latest
-    container_name: floraguard_ai
+    image: plantdiseaseai:latest
+    container_name: plantdiseaseai_app
     restart: unless-stopped
     ports:
       - "8000:8000"
     environment:
       - PORT=8000
       - APP_ENV=production
-      - CONFIDENCE_THRESHOLD=0.60
+      - LOG_LEVEL=INFO
+      - INFERENCE_DEVICE=cpu
     volumes:
-      - floraguard_data:/app/database
-      - floraguard_uploads:/app/uploads
+      - plantdiseaseai_data:/app/backend/runtime
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 15s
+      start_period: 20s
 
 volumes:
-  floraguard_data:
-  floraguard_uploads:
+  plantdiseaseai_data:

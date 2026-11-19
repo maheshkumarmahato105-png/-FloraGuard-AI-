@@ -1,0 +1,48 @@
+# ==============================================================================
+# PlantDiseaseAI — Phase 3 Model Architecture Configuration
+# Config-driven specification for AgriVision-CNN and baseline architectures.
+# ==============================================================================
+
+experiment:
+  random_seed: 42
+
+input:
+  image_height: 224
+  image_width: 224
+  in_channels: 3
+
+dataset_reference:
+  # Number of output classes is resolved dynamically from the verified Phase 2 mapping
+  dataset_config_path: "ml/configs/dataset_config.yaml"
+  class_mapping_path: "ml/configs/class_mapping.yaml"
+  num_classes: "auto"  # Set to "auto" (recommended) or an integer override for synthetic tests
+
+model:
+  architecture: "agrivision_cnn"  # agrivision_cnn | simple_cnn | resnet18_baseline
+  activation: "relu"              # relu | silu | gelu | leaky_relu
+  dropout: 0.30
+
+  agrivision_cnn:
+    stem_channels: 32
+    stem_stride: 2
+    multiscale:
+      branch_3x3_channels: 32
+      branch_5x5_channels: 32
+      out_channels: 64
+      use_projection: true
+    stage_channels: [64, 128, 256]
+    blocks_per_stage: [2, 2, 2]
+    stage_strides: [2, 2, 2]
+    attention:
+      enabled: true
+      type: "squeeze_excitation"
+      reduction_ratio: 8
+      min_hidden_channels: 8
+
+  simple_cnn:
+    stage_channels: [32, 64, 128, 256]
+    dropout: 0.30
+
+  resnet18_baseline:
+    pretrained: false  # Strictly trained from scratch (weights=None) for fair comparison
+    dropout: 0.20
