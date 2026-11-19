@@ -5,9 +5,13 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, List, Sequence, Tuple
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+except ImportError:
+    matplotlib = None
+    plt = None
 import numpy as np
 import pandas as pd
 from sklearn.metrics import confusion_matrix

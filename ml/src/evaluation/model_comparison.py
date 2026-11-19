@@ -11,9 +11,13 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+except ImportError:
+    matplotlib = None
+    plt = None
 import numpy as np
 import pandas as pd
 
