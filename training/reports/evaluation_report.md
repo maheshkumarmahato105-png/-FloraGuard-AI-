@@ -1,6 +1,6 @@
 # Plant Disease Detection — Model Evaluation Report
 
-- **Evaluated At (UTC):** `2026-11-18T05:26:41.895463+00:00`
+- **Evaluated At (UTC):** `2026-11-19T13:35:32.708045+00:00`
 - **Model Architecture:** `mobilenet_v2`
 - **Number of Classes:** `38`
 - **Test Set Size:** `8158` images

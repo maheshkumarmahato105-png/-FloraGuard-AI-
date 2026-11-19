@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: floraguard-ai
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install --upgrade pip && pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -r backend/requirements.txt"
+    startCommand: "uvicorn backend.app:app --host 0.0.0.0 --port $PORT --workers 1"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: CONFIDENCE_THRESHOLD
+        value: "0.60"
+    healthCheckPath: /api/health
