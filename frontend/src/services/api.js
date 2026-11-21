@@ -32,8 +32,8 @@ export const API_V1_PREFIX = '/api/v1';
 
 const PARSED_TIMEOUT = Number(import.meta.env.VITE_API_TIMEOUT_MS);
 export const DEFAULT_TIMEOUT_MS =
-  Number.isFinite(PARSED_TIMEOUT) && PARSED_TIMEOUT > 0 ? PARSED_TIMEOUT : 30000;
-export const STANDARD_TIMEOUT_MS = Math.min(DEFAULT_TIMEOUT_MS, 15000);
+  Number.isFinite(PARSED_TIMEOUT) && PARSED_TIMEOUT > 0 ? PARSED_TIMEOUT : 60000;
+export const STANDARD_TIMEOUT_MS = Math.min(DEFAULT_TIMEOUT_MS, 60000);
 
 export class ApiError extends Error {
   constructor({
@@ -157,7 +157,7 @@ export async function apiRequest(
     if (err?.name === 'AbortError') {
       if (timedOut) {
         throw new ApiError({
-          message: `The request timed out after ${Math.round(timeoutMs / 1000)}s. Verify the backend is responsive and try again.`,
+          message: `The request timed out. Free-tier cloud backends (like Render) take 30–50s to wake up on initial request. Please click retry now that the server is warm.`,
           errorCode: 'timeout',
           isTimeout: true,
         });
