@@ -90,9 +90,7 @@ ml/experiments/logs/*
 ml/experiments/checkpoints/*
 !ml/experiments/checkpoints/.gitkeep
 !ml/experiments/checkpoints/exp_a_agrivision_cnn/
-ml/experiments/checkpoints/exp_a_agrivision_cnn/*.pth
-!ml/experiments/checkpoints/exp_a_agrivision_cnn/chunks/
-!ml/experiments/checkpoints/exp_a_agrivision_cnn/chunks/*.bin
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/best_model.pth
 ml/experiments/results/*
 !ml/experiments/results/.gitkeep
 ml/experiments/evaluation/metrics/*
