@@ -29,6 +29,7 @@ ENV/
 .env
 .env.*
 !.env.example
+!frontend/.env.production
 
 # Datasets (never commit raw, interim, or processed image datasets)
 ml/data/metadata/*_manifest.csv
@@ -77,6 +78,9 @@ artifacts/*
 *.pkl
 *.joblib
 
+# Trained AgriVision-CNN production weights
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/best_model.pth
+
 # TensorBoard & experiment logs
 runs/
 logs/
@@ -85,6 +89,8 @@ ml/experiments/logs/*
 !ml/experiments/logs/.gitkeep
 ml/experiments/checkpoints/*
 !ml/experiments/checkpoints/.gitkeep
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/best_model.pth
 ml/experiments/results/*
 !ml/experiments/results/.gitkeep
 ml/experiments/evaluation/metrics/*

@@ -119,8 +119,8 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
         allow_origins=cfg.cors_origins,
         allow_origin_regex=r"^https:\/\/.*\.vercel\.app$",
         allow_credentials=False,
-        allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
-        allow_headers=["Content-Type", "Accept", "X-Request-ID"],
+        allow_methods=["*"],
+        allow_headers=["*"],
     )
 
     rate_limiter = _InMemoryRateLimiter(cfg.rate_limit_per_minute)
