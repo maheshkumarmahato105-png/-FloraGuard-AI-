@@ -31,11 +31,18 @@ ML_SRC_DIR = PROJECT_ROOT / "ml" / "src"
 if str(ML_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(ML_SRC_DIR))
 
-from config_loader import load_class_mapping, load_dataset_config
-from evaluation.calibration import softmax_numpy
-from evaluation.evaluate import verify_trained_checkpoint
-from models import create_model, load_model_config, resolve_verified_classes
-from preprocess import get_eval_transform
+try:
+    from ml.src.config_loader import load_class_mapping, load_dataset_config
+    from ml.src.evaluation.calibration import softmax_numpy
+    from ml.src.evaluation.evaluate import verify_trained_checkpoint
+    from ml.src.models import create_model, load_model_config, resolve_verified_classes
+    from ml.src.preprocess import get_eval_transform
+except ImportError:
+    from config_loader import load_class_mapping, load_dataset_config
+    from evaluation.calibration import softmax_numpy
+    from evaluation.evaluate import verify_trained_checkpoint
+    from models import create_model, load_model_config, resolve_verified_classes
+    from preprocess import get_eval_transform
 
 logger = logging.getLogger("plantdiseaseai.backend")
 

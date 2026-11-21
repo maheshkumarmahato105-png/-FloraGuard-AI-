@@ -31,7 +31,10 @@ ML_SRC_DIR = PROJECT_ROOT / "ml" / "src"
 if str(ML_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(ML_SRC_DIR))
 
-from preprocess import resize_and_pad_rgb
+try:
+    from ml.src.preprocess import resize_and_pad_rgb
+except ImportError:
+    from preprocess import resize_and_pad_rgb
 
 logger = logging.getLogger("plantdiseaseai.backend")
 
