@@ -102,7 +102,13 @@ export function Dashboard({ healthState }) {
           title: 'Analysis complete',
           message: `Classified as ${predictionResult.response.prediction.disease_name}`,
         });
-        navigate(`/results/${predictionResult.response.request_id}`);
+        navigate(`/results/${predictionResult.response.request_id}`, {
+          state: {
+            predictionPayload: predictionResult.response,
+            previewDataUrl: previewUrl,
+            originalFileName: file?.name || 'leaf-sample.png',
+          },
+        });
       } else {
         // Fallback to sample report if backend is not loaded or returned error
         navigate('/sample-report');
