@@ -12,39 +12,41 @@ export function QuickActions({ health, systemInfo, loading }) {
         <div>
           <h2 className="card-title">
             <Cpu size={17} aria-hidden="true" />
-            Quick Actions &amp; System Status
+            Quick Actions &amp; Readiness
           </h2>
-          <p className="card-subtitle">Live diagnostics reported by the FastAPI backend.</p>
+          <p className="card-subtitle">Live system telemetry reported by the backend.</p>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10, marginBottom: 18 }}>
-        <Link to="/detection" className="btn btn-primary" style={{ justifyContent: 'space-between' }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            <Upload size={16} aria-hidden="true" />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10, marginBottom: 20 }}>
+        <Link to="/detection" className="btn btn-primary" style={{ justifyContent: 'space-between', padding: '12px 18px' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 600 }}>
+            <Upload size={17} aria-hidden="true" />
             Upload Leaf Image
           </span>
-          <span style={{ fontSize: '0.78rem', opacity: 0.85 }}>Scan</span>
+          <span style={{ fontSize: '0.78rem', opacity: 0.9, background: 'rgba(0,0,0,0.15)', padding: '2px 8px', borderRadius: 'var(--radius-sm)' }}>
+            Instant Scan
+          </span>
         </Link>
 
         <Link
           to="/detection?mode=camera"
           className="btn btn-secondary"
-          style={{ justifyContent: 'space-between' }}
+          style={{ justifyContent: 'space-between', padding: '12px 18px' }}
         >
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            <Camera size={16} aria-hidden="true" />
-            Open Live Camera Capture
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <Camera size={17} aria-hidden="true" />
+            Open Camera Capture
           </span>
-          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Opt-in</span>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Live View</span>
         </Link>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-          <Link to="/history" className="btn btn-secondary btn-sm">
+          <Link to="/history" className="btn btn-secondary btn-sm" style={{ padding: '9px 12px' }}>
             <HistoryIcon size={15} aria-hidden="true" />
             History
           </Link>
-          <Link to="/settings" className="btn btn-secondary btn-sm">
+          <Link to="/settings" className="btn btn-secondary btn-sm" style={{ padding: '9px 12px' }}>
             <SettingsIcon size={15} aria-hidden="true" />
             Settings
           </Link>
@@ -79,15 +81,15 @@ export function QuickActions({ health, systemInfo, loading }) {
           </dd>
         </div>
         <div className="kv-row">
-          <dt className="kv-label">Architecture</dt>
-          <dd className="kv-value" style={{ margin: 0 }}>
-            {systemInfo?.model_name || '—'}
+          <dt className="kv-label">Inference Device</dt>
+          <dd className="kv-value mono" style={{ margin: 0 }}>
+            {loading ? '…' : (health?.inference_device || 'CPU').toUpperCase()}
           </dd>
         </div>
         <div className="kv-row">
-          <dt className="kv-label">Inference Device</dt>
-          <dd className="kv-value mono" style={{ margin: 0, fontSize: '0.84rem' }}>
-            {health?.inference_device || systemInfo?.device_type || '—'}
+          <dt className="kv-label">Active Architecture</dt>
+          <dd className="kv-value mono" style={{ margin: 0 }}>
+            {systemInfo?.model_name || 'agrivision_cnn'}
           </dd>
         </div>
       </dl>

@@ -41,8 +41,8 @@ export function Navbar({ health, loading, onRefreshHealth }) {
     <header className="top-navbar">
       <div className="navbar-left">
         <div className="navbar-mobile-brand">
-          <span className="brand-mark" style={{ width: 32, height: 32 }} aria-hidden="true">
-            <Leaf size={17} />
+          <span className="brand-mark" style={{ width: 34, height: 34 }} aria-hidden="true">
+            <Leaf size={18} />
           </span>
           <span>PlantDiseaseAI</span>
         </div>
@@ -64,7 +64,7 @@ export function Navbar({ health, loading, onRefreshHealth }) {
             aria-label="Refresh backend connection status"
             title="Refresh backend status"
           >
-            <RefreshCw size={16} aria-hidden="true" />
+            <RefreshCw size={15} aria-hidden="true" className={loading ? 'spin' : ''} />
           </button>
         ) : null}
 
@@ -76,9 +76,9 @@ export function Navbar({ health, loading, onRefreshHealth }) {
           title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
         >
           {theme === 'dark' ? (
-            <Sun size={16} aria-hidden="true" />
+            <Sun size={15} aria-hidden="true" />
           ) : (
-            <Moon size={16} aria-hidden="true" />
+            <Moon size={15} aria-hidden="true" />
           )}
         </button>
       </div>

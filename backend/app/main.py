@@ -12,7 +12,7 @@ import time
 from typing import Optional
 import uuid
 
-from fastapi import FastAPI, Request, status
+from fastapi import FastAPI, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -186,6 +186,10 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
             },
             "frontend_url": "https://floraguard-ai.vercel.app",
         }
+
+    @app.get("/favicon.ico", include_in_schema=False)
+    async def favicon():
+        return Response(status_code=204)
 
     # Mount compiled React SPA production build if present
     from .core.config import PROJECT_ROOT

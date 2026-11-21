@@ -9,6 +9,7 @@ export function DashboardStats({ summary, loading }) {
       caption: 'Persisted in backend SQLite history',
       icon: Activity,
       toneColor: 'var(--accent-primary)',
+      badgeBg: 'var(--bg-hover)',
     },
     {
       key: 'healthy',
@@ -19,6 +20,7 @@ export function DashboardStats({ summary, loading }) {
         : 'Accepted healthy leaf predictions',
       icon: CheckCircle2,
       toneColor: 'var(--status-healthy)',
+      badgeBg: 'var(--status-healthy-bg)',
     },
     {
       key: 'diseased',
@@ -29,6 +31,7 @@ export function DashboardStats({ summary, loading }) {
         : 'Accepted diseased leaf predictions',
       icon: Bug,
       toneColor: 'var(--status-danger)',
+      badgeBg: 'var(--status-danger-bg)',
     },
     {
       key: 'uncertain',
@@ -37,21 +40,26 @@ export function DashboardStats({ summary, loading }) {
       caption: 'Rejected by uncertainty safety policy',
       icon: AlertTriangle,
       toneColor: 'var(--status-warning)',
+      badgeBg: 'var(--status-warning-bg)',
     },
   ];
 
   return (
     <section className="stats-grid" aria-label="Prediction statistics">
-      {cards.map(({ key, label, value, caption, icon: Icon, toneColor }) => (
+      {cards.map(({ key, label, value, caption, icon: Icon, toneColor, badgeBg }) => (
         <article key={key} className="card stat-card card-interactive">
           <div className="stat-top">
             <span className="stat-label">{label}</span>
-            <span className="stat-icon" style={{ color: toneColor }} aria-hidden="true">
-              <Icon size={17} />
+            <span
+              className="stat-icon"
+              style={{ color: toneColor, background: badgeBg }}
+              aria-hidden="true"
+            >
+              <Icon size={16} />
             </span>
           </div>
           {loading ? (
-            <div className="skeleton" style={{ height: 34, width: '48%' }} aria-hidden="true" />
+            <div className="skeleton" style={{ height: 36, width: '48%', margin: '4px 0 8px' }} aria-hidden="true" />
           ) : (
             <div className="stat-value tabular">{value}</div>
           )}
