@@ -92,6 +92,28 @@ class ModelService:
     def initialize(self) -> bool:
         """Verify and load the configured trained checkpoint once at startup."""
         ckpt_path = self.settings.model_checkpoint_path
+
+        # If full checkpoint is not present, check for auto-download or chunks
+        if not ckpt_path.exists():
+            download_url = os.getenv(
+                "MODEL_DOWNLOAD_URL",
+                "https://github.com/maheshkumarmahato105-png/-FloraGuard-AI-/releases/download/v1.0.0/best_model.pth",
+            )
+            if download_url:
+                try:
+                    import urllib.request
+                    logger.info("Checking for model checkpoint download from %s...", download_url)
+                    ckpt_path.parent.mkdir(parents=True, exist_ok=True)
+                    temp_file = ckpt_path.with_suffix(".tmp")
+                    urllib.request.urlretrieve(download_url, str(temp_file))
+                    if temp_file.exists() and temp_file.stat().st_size > 1000000:
+                        temp_file.replace(ckpt_path)
+                        logger.info("Successfully downloaded and installed checkpoint to %s", ckpt_path)
+                    else:
+                        temp_file.unlink(missing_ok=True)
+                except Exception as dl_err:
+                    logger.debug("Automatic checkpoint download not completed: %s", dl_err)
+
         check = verify_trained_checkpoint(ckpt_path, expected_arch=self.model_name)
 
         if not check["valid_trained_checkpoint"]:

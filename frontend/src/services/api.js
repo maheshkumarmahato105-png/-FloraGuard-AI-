@@ -3,8 +3,31 @@
  * Uses VITE_API_BASE_URL (default: http://127.0.0.1:8001).
  */
 
-const RAW_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001';
-export const API_BASE_URL = RAW_BASE_URL.replace(/\/+$/, '');
+export function getApiBaseUrl() {
+  if (typeof window !== 'undefined') {
+    const custom = window.localStorage.getItem('CUSTOM_API_BASE_URL');
+    if (custom && custom.trim()) {
+      return custom.trim().replace(/\/+$/, '');
+    }
+  }
+  const raw = import.meta.env.VITE_API_BASE_URL;
+  if (raw && !raw.includes('plantdiseaseai-backend.onrender.com')) {
+    return raw.replace(/\/+$/, '');
+  }
+  return 'https://floraguard-ai.onrender.com';
+}
+
+export function setCustomApiBaseUrl(url) {
+  if (typeof window !== 'undefined') {
+    if (url && url.trim()) {
+      window.localStorage.setItem('CUSTOM_API_BASE_URL', url.trim());
+    } else {
+      window.localStorage.removeItem('CUSTOM_API_BASE_URL');
+    }
+  }
+}
+
+export const API_BASE_URL = getApiBaseUrl();
 export const API_V1_PREFIX = '/api/v1';
 
 const PARSED_TIMEOUT = Number(import.meta.env.VITE_API_TIMEOUT_MS);
@@ -35,7 +58,7 @@ export function resolveApiUrl(path) {
   if (!path) return '';
   if (/^https?:\/\//i.test(path)) return path;
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  return `${API_BASE_URL}${normalized}`;
+  return `${getApiBaseUrl()}${normalized}`;
 }
 
 export function getFriendlyErrorMessage(status, payload = null) {
@@ -145,7 +168,7 @@ export async function apiRequest(
       });
     }
     throw new ApiError({
-      message: `Unable to reach the PlantDiseaseAI backend at ${API_BASE_URL}. Confirm the FastAPI server is running.`,
+      message: `Unable to reach the PlantDiseaseAI backend at ${getApiBaseUrl()}. Confirm the FastAPI server is running.`,
       errorCode: 'network_error',
       isNetworkError: true,
     });
@@ -233,7 +256,7 @@ export function apiUpload(
       cleanup();
       reject(
         new ApiError({
-          message: `Unable to reach the PlantDiseaseAI backend at ${API_BASE_URL}. Confirm the FastAPI server is running.`,
+          message: `Unable to reach the PlantDiseaseAI backend at ${getApiBaseUrl()}. Confirm the FastAPI server is running.`,
           errorCode: 'network_error',
           isNetworkError: true,
         })

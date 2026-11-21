@@ -1,14 +1,29 @@
+import { useState } from 'react';
 import { Cpu, Moon, Palette, RefreshCw, Server, Sun } from 'lucide-react';
 import PageContainer from '../components/layout/PageContainer';
 import StatusIndicator from '../components/common/StatusIndicator';
 import ErrorMessage from '../components/common/ErrorMessage';
-import { API_BASE_URL } from '../services/api';
+import { getApiBaseUrl, setCustomApiBaseUrl } from '../services/api';
 import { useTheme } from '../context/ThemeContext';
 import { formatBytes, formatTimestamp } from '../utils/formatters';
 
 export function Settings({ healthState }) {
   const { theme, setTheme } = useTheme();
   const { health, systemInfo, loading, error, lastCheckedAt, refresh } = healthState;
+
+  const [currentUrl, setCurrentUrl] = useState(getApiBaseUrl());
+  const [isEditingUrl, setIsEditingUrl] = useState(false);
+  const [urlInput, setUrlInput] = useState(getApiBaseUrl());
+
+  const handleSaveUrl = (urlToSet) => {
+    const trimmed = (urlToSet || '').trim();
+    setCustomApiBaseUrl(trimmed);
+    const resolved = getApiBaseUrl();
+    setCurrentUrl(resolved);
+    setUrlInput(resolved);
+    setIsEditingUrl(false);
+    refresh();
+  };
 
   const isOnline = Boolean(health?.api_status === 'online');
   const isModelReady = Boolean(health?.model_ready);
@@ -29,7 +44,7 @@ export function Settings({ healthState }) {
           <ErrorMessage
             title="Backend unreachable"
             message={error}
-            recoveryHint={`Confirm the Phase 7 FastAPI server is listening at ${API_BASE_URL} and retry.`}
+            recoveryHint={`Confirm the Phase 7 FastAPI server is listening at ${currentUrl} and retry.`}
             onRetry={refresh}
           />
         </div>
@@ -57,11 +72,49 @@ export function Settings({ healthState }) {
                 />
               </dd>
             </div>
-            <div className="kv-row">
-              <dt className="kv-label">Configured API Base URL</dt>
-              <dd className="kv-value mono" style={{ margin: 0, fontSize: '0.84rem' }}>
-                {API_BASE_URL}
-              </dd>
+            <div className="kv-row" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+                <dt className="kv-label">Configured API Base URL</dt>
+                <button
+                  type="button"
+                  className="btn btn-secondary btn-sm"
+                  style={{ fontSize: '0.75rem', padding: '2px 8px' }}
+                  onClick={() => setIsEditingUrl(!isEditingUrl)}
+                >
+                  {isEditingUrl ? 'Cancel' : 'Change URL'}
+                </button>
+              </div>
+              {isEditingUrl ? (
+                <div style={{ display: 'flex', gap: '8px', width: '100%', marginTop: '4px' }}>
+                  <input
+                    type="text"
+                    value={urlInput}
+                    onChange={(e) => setUrlInput(e.target.value)}
+                    placeholder="https://floraguard-ai.onrender.com"
+                    style={{ flex: 1, padding: '4px 8px', fontSize: '0.85rem', borderRadius: '4px', border: '1px solid var(--border-color, #ccc)' }}
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => handleSaveUrl(urlInput)}
+                  >
+                    Save & Connect
+                  </button>
+                </div>
+              ) : (
+                <dd className="kv-value mono" style={{ margin: 0, fontSize: '0.84rem', wordBreak: 'break-all' }}>
+                  {currentUrl}
+                </dd>
+              )}
+              {currentUrl !== 'https://floraguard-ai.onrender.com' && (
+                <button
+                  type="button"
+                  style={{ fontSize: '0.75rem', background: 'none', border: 'none', color: '#10b981', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}
+                  onClick={() => handleSaveUrl('https://floraguard-ai.onrender.com')}
+                >
+                  Use Live Render URL (https://floraguard-ai.onrender.com)
+                </button>
+              )}
             </div>
             <div className="kv-row">
               <dt className="kv-label">Database Status</dt>
