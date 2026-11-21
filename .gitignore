@@ -89,6 +89,10 @@ ml/experiments/logs/*
 !ml/experiments/logs/.gitkeep
 ml/experiments/checkpoints/*
 !ml/experiments/checkpoints/.gitkeep
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/
+ml/experiments/checkpoints/exp_a_agrivision_cnn/*.pth
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/chunks/
+!ml/experiments/checkpoints/exp_a_agrivision_cnn/chunks/*.bin
 ml/experiments/results/*
 !ml/experiments/results/.gitkeep
 ml/experiments/evaluation/metrics/*

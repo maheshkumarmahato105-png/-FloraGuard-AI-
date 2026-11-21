@@ -12,10 +12,12 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import os
 from pathlib import Path
 import sys
 import threading
 from typing import Any, Dict, List, Optional, Tuple
+import urllib.request
 
 import numpy as np
 from PIL import Image
@@ -93,15 +95,27 @@ class ModelService:
         """Verify and load the configured trained checkpoint once at startup."""
         ckpt_path = self.settings.model_checkpoint_path
 
-        # If full checkpoint is not present, check for auto-download or chunks
-        if not ckpt_path.exists():
-            download_url = os.getenv(
-                "MODEL_DOWNLOAD_URL",
-                "https://github.com/maheshkumarmahato105-png/-FloraGuard-AI-/releases/download/v1.0.0/best_model.pth",
-            )
-            if download_url:
-                try:
-                    import urllib.request
+        # Safe auto-download or chunk reassembly (never crashes startup if remote is unreachable)
+        try:
+            if not ckpt_path.exists():
+                chunk_dir = ckpt_path.parent / "chunks"
+                if chunk_dir.exists():
+                    chunks = sorted(chunk_dir.glob("chunk_*.bin"))
+                    if chunks:
+                        logger.info("Reassembling model checkpoint from %d binary chunks...", len(chunks))
+                        ckpt_path.parent.mkdir(parents=True, exist_ok=True)
+                        with open(ckpt_path, "wb") as outfile:
+                            for chunk_file in chunks:
+                                with open(chunk_file, "rb") as infile:
+                                    outfile.write(infile.read())
+                        logger.info("Model checkpoint successfully reassembled at %s", ckpt_path)
+
+            if not ckpt_path.exists():
+                download_url = os.getenv(
+                    "MODEL_DOWNLOAD_URL",
+                    "https://github.com/maheshkumarmahato105-png/-FloraGuard-AI-/releases/download/v1.0.0/best_model.pth",
+                )
+                if download_url:
                     logger.info("Checking for model checkpoint download from %s...", download_url)
                     ckpt_path.parent.mkdir(parents=True, exist_ok=True)
                     temp_file = ckpt_path.with_suffix(".tmp")
@@ -111,8 +125,8 @@ class ModelService:
                         logger.info("Successfully downloaded and installed checkpoint to %s", ckpt_path)
                     else:
                         temp_file.unlink(missing_ok=True)
-                except Exception as dl_err:
-                    logger.debug("Automatic checkpoint download not completed: %s", dl_err)
+        except Exception as setup_err:
+            logger.warning("Optional checkpoint preparation skipped or failed: %s", setup_err)
 
         check = verify_trained_checkpoint(ckpt_path, expected_arch=self.model_name)
 
