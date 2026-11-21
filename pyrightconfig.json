@@ -1,5 +1,7 @@
 {
   "typeCheckingMode": "off",
+  "venvPath": ".",
+  "venv": ".venv",
   "include": [
     "backend",
     "ml"
@@ -11,5 +13,7 @@
     "backend"
   ],
   "reportMissingImports": "none",
-  "reportMissingTypeStubs": false
+  "reportMissingModuleSource": "none",
+  "reportMissingTypeStubs": false,
+  "reportUnusedImport": "none"
 }

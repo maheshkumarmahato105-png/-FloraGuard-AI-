@@ -14,10 +14,11 @@ import uuid
 
 from fastapi import FastAPI, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from .api.routes import health, history, prediction, system
-from .core.config import Settings, get_settings
+from .core.config import PROJECT_ROOT, Settings, get_settings
 from .core.exceptions import register_exception_handlers
 from .core.logging import configure_logging
 from .database.database import DatabaseManager
@@ -192,10 +193,6 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
         return Response(status_code=204)
 
     # Mount compiled React SPA production build if present
-    from .core.config import PROJECT_ROOT
-    from fastapi.staticfiles import StaticFiles
-    from fastapi.responses import FileResponse
-
     frontend_dist = PROJECT_ROOT / "frontend" / "dist"
     if frontend_dist.is_dir() and (frontend_dist / "index.html").is_file():
         assets_dir = frontend_dist / "assets"
