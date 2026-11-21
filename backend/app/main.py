@@ -171,6 +171,22 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
     app.include_router(prediction.router, prefix=prefix)
     app.include_router(history.router, prefix=prefix)
 
+    @app.get("/", include_in_schema=False)
+    async def root_status():
+        return {
+            "status": "online",
+            "app_name": cfg.app_name,
+            "version": cfg.app_version,
+            "endpoints": {
+                "health": f"{prefix}/health",
+                "predict": f"{prefix}/predict",
+                "history": f"{prefix}/history",
+                "system_info": f"{prefix}/system/info",
+                "swagger_docs": "/docs",
+            },
+            "frontend_url": "https://floraguard-ai.vercel.app",
+        }
+
     # Mount compiled React SPA production build if present
     from .core.config import PROJECT_ROOT
     from fastapi.staticfiles import StaticFiles
