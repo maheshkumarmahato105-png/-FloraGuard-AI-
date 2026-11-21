@@ -49,7 +49,7 @@ export function Sidebar({ health, systemInfo, loading }) {
           <Leaf size={20} />
         </div>
         <div>
-          <div className="brand-title">PlantDiseaseAI</div>
+          <div className="brand-title">FloraGuard AI</div>
           <div className="brand-subtitle">
             {systemInfo?.model_name || 'AgriVision-CNN'}
           </div>

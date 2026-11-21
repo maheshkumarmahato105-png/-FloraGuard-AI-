@@ -6,11 +6,13 @@ import Sidebar from './components/layout/Sidebar';
 import Navbar from './components/layout/Navbar';
 import MobileNavigation from './components/layout/MobileNavigation';
 import ToastContainer from './components/common/ToastContainer';
+import FloraChatDrawer from './components/common/FloraChatDrawer';
 import Dashboard from './pages/Dashboard';
 import Detection from './pages/Detection';
 import Results from './pages/Results';
 import History from './pages/History';
 import Settings from './pages/Settings';
+import SampleReport from './pages/SampleReport';
 import NotFound from './pages/NotFound';
 
 export function AppShell() {
@@ -41,11 +43,13 @@ export function AppShell() {
           <Route path="/results/:requestId" element={<Results />} />
           <Route path="/history" element={<History />} />
           <Route path="/settings" element={<Settings healthState={healthState} />} />
+          <Route path="/sample-report" element={<SampleReport />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
 
       <MobileNavigation />
+      <FloraChatDrawer />
       <ToastContainer />
     </div>
   );

@@ -1,21 +1,10 @@
-import { useLocation } from 'react-router-dom';
-import { Leaf, Moon, RefreshCw, Sun } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { FileText, History as HistoryIcon, Moon, RefreshCw, Settings as SettingsIcon, Sun } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import StatusIndicator from '../common/StatusIndicator';
 
-function resolveRouteLabel(pathname) {
-  if (pathname === '/') return 'Dashboard Overview';
-  if (pathname.startsWith('/detection')) return 'Plant Disease Detection';
-  if (pathname.startsWith('/results')) return 'Prediction Analysis';
-  if (pathname.startsWith('/history')) return 'Prediction History';
-  if (pathname.startsWith('/settings')) return 'Application Settings';
-  return 'PlantDiseaseAI';
-}
-
 export function Navbar({ health, loading, onRefreshHealth }) {
-  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const routeLabel = resolveRouteLabel(location.pathname);
 
   const statusTone = loading
     ? 'neutral'
@@ -38,18 +27,47 @@ export function Navbar({ health, loading, onRefreshHealth }) {
           : 'System Unhealthy';
 
   return (
-    <header className="top-navbar">
+    <header className="app-header top-navbar">
       <div className="navbar-left">
-        <div className="navbar-mobile-brand">
-          <span className="brand-mark" style={{ width: 34, height: 34 }} aria-hidden="true">
-            <Leaf size={18} />
-          </span>
-          <span>PlantDiseaseAI</span>
-        </div>
-        <span className="navbar-breadcrumb">{routeLabel}</span>
+        <Link to="/" className="brand-logo" aria-label="FloraGuard AI Home">
+          <div className="brand-icon" aria-hidden="true">🌿</div>
+          <span>Flora<span style={{ color: 'var(--accent-primary)' }}>Guard</span> AI</span>
+        </Link>
       </div>
 
-      <div className="navbar-right">
+      <nav className="nav-menu" aria-label="Main application tabs">
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) => `nav-link-pill${isActive ? ' active' : ''}`}
+        >
+          <span className="nav-pill-dot" aria-hidden="true" />
+          <span>AI Scanner</span>
+        </NavLink>
+        <NavLink
+          to="/sample-report"
+          className={({ isActive }) => `nav-link-pill${isActive ? ' active' : ''}`}
+        >
+          <FileText size={15} aria-hidden="true" />
+          <span>Sample A4 Diagnostic Report</span>
+        </NavLink>
+        <NavLink
+          to="/history"
+          className={({ isActive }) => `nav-link-pill${isActive ? ' active' : ''}`}
+        >
+          <HistoryIcon size={15} aria-hidden="true" />
+          <span>History</span>
+        </NavLink>
+        <NavLink
+          to="/settings"
+          className={({ isActive }) => `nav-link-pill${isActive ? ' active' : ''}`}
+        >
+          <SettingsIcon size={15} aria-hidden="true" />
+          <span>Settings</span>
+        </NavLink>
+      </nav>
+
+      <div className="navbar-right" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <StatusIndicator
           label={statusText}
           tone={statusTone}
