@@ -15,7 +15,7 @@ export function PredictionCard({ result }) {
         : [];
 
     return (
-      <section className="card" aria-label="Uncertain prediction notice">
+      <section className="card prediction-hero-card uncertain" aria-label="Uncertain prediction notice">
         <div className="alert alert-warning" role="alert">
           <AlertTriangle size={22} className="alert-icon" aria-hidden="true" />
           <div className="alert-body">
@@ -86,7 +86,10 @@ export function PredictionCard({ result }) {
   const diseaseName = pred.disease_name || null;
 
   return (
-    <section className="card" aria-label="Prediction summary">
+    <section
+      className={`card prediction-hero-card ${isHealthy ? 'healthy' : 'diseased'}`}
+      aria-label="Prediction summary"
+    >
       <div className="card-header" style={{ alignItems: 'flex-start' }}>
         <div>
           <div style={{ marginBottom: 8 }}>

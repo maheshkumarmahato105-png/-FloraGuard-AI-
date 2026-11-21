@@ -229,27 +229,61 @@ export function Settings({ healthState }) {
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }} role="radiogroup" aria-label="Theme mode">
+        <div className="theme-picker-grid" role="radiogroup" aria-label="Theme mode">
           <button
             type="button"
             role="radio"
             aria-checked={theme === 'dark'}
-            className={`btn ${theme === 'dark' ? 'btn-primary' : 'btn-secondary'}`}
+            className={`theme-card-option${theme === 'dark' ? ' active' : ''}`}
             onClick={() => setTheme('dark')}
           >
-            <Moon size={16} aria-hidden="true" />
-            Dark Mode (Default)
+            <div className="theme-preview-box theme-preview-dark" aria-hidden="true">
+              <div style={{ display: 'flex', gap: 5, marginBottom: 4 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff5f56' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffbd2e' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#27c93f' }} />
+              </div>
+              <div style={{ height: 8, width: '55%', background: 'rgba(255,255,255,0.15)', borderRadius: 4 }} />
+              <div style={{ display: 'flex', gap: 6, marginTop: 2 }}>
+                <div style={{ flex: 1, height: 28, background: 'rgba(52,199,89,0.22)', border: '1px solid rgba(52,199,89,0.35)', borderRadius: 6 }} />
+                <div style={{ flex: 1, height: 28, background: 'rgba(255,255,255,0.06)', borderRadius: 6 }} />
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontWeight: 600, fontSize: '0.90rem', color: 'var(--text-main)' }}>
+                <Moon size={16} aria-hidden="true" />
+                Dark Mode (Default)
+              </span>
+              <span className={`radio-dot${theme === 'dark' ? ' active' : ''}`} aria-hidden="true" />
+            </div>
           </button>
 
           <button
             type="button"
             role="radio"
             aria-checked={theme === 'light'}
-            className={`btn ${theme === 'light' ? 'btn-primary' : 'btn-secondary'}`}
+            className={`theme-card-option${theme === 'light' ? ' active' : ''}`}
             onClick={() => setTheme('light')}
           >
-            <Sun size={16} aria-hidden="true" />
-            Light Mode
+            <div className="theme-preview-box theme-preview-light" aria-hidden="true">
+              <div style={{ display: 'flex', gap: 5, marginBottom: 4 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff5f56' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffbd2e' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#27c93f' }} />
+              </div>
+              <div style={{ height: 8, width: '55%', background: 'rgba(0,0,0,0.12)', borderRadius: 4 }} />
+              <div style={{ display: 'flex', gap: 6, marginTop: 2 }}>
+                <div style={{ flex: 1, height: 28, background: 'rgba(21,128,61,0.15)', border: '1px solid rgba(21,128,61,0.28)', borderRadius: 6 }} />
+                <div style={{ flex: 1, height: 28, background: 'rgba(0,0,0,0.04)', borderRadius: 6 }} />
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontWeight: 600, fontSize: '0.90rem', color: 'var(--text-main)' }}>
+                <Sun size={16} aria-hidden="true" />
+                Light Mode
+              </span>
+              <span className={`radio-dot${theme === 'light' ? ' active' : ''}`} aria-hidden="true" />
+            </div>
           </button>
         </div>
       </section>

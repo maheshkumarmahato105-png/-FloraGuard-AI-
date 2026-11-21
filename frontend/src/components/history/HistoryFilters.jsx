@@ -1,4 +1,4 @@
-import { RotateCcw, Search } from 'lucide-react';
+import { RotateCcw, Search, X } from 'lucide-react';
 
 export function HistoryFilters({
   search,
@@ -38,11 +38,32 @@ export function HistoryFilters({
               id="history-search-input"
               type="search"
               className="input"
-              style={{ paddingLeft: 34 }}
+              style={{ paddingLeft: 34, paddingRight: search ? 32 : 12 }}
               placeholder="e.g. tomato, early_blight, healthy…"
               value={search}
               onChange={(e) => onSearchChange?.(e.target.value)}
             />
+            {search ? (
+              <button
+                type="button"
+                onClick={() => onSearchChange?.('')}
+                style={{
+                  position: 'absolute',
+                  right: 10,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  padding: 4,
+                  display: 'inline-flex',
+                }}
+                aria-label="Clear search query"
+              >
+                <X size={14} aria-hidden="true" />
+              </button>
+            ) : null}
           </div>
         </div>
 

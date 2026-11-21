@@ -103,9 +103,40 @@ export function ImageUploader({
           {dragging ? 'Drop leaf image here' : 'Drag and drop a plant leaf photo'}
         </h3>
         <p className="dropzone-hint">
-          Supports {(supportedFormats?.length ? supportedFormats : DEFAULT_ALLOWED_FORMATS).join(', ')} up to{' '}
-          {formatBytes(maxBytes)}. Capture a clear, well-lit leaf against a clean background.
+          Capture a single, clear, well-lit leaf against a clean background for optimal AgriVision-CNN diagnostic accuracy.
         </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 6, margin: '12px 0 16px', flexWrap: 'wrap' }}>
+          {(supportedFormats?.length ? supportedFormats : DEFAULT_ALLOWED_FORMATS).map((fmt) => (
+            <span
+              key={fmt}
+              style={{
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                padding: '2px 8px',
+                borderRadius: 'var(--radius-xs)',
+                background: 'var(--bg-card-elevated)',
+                border: '1px solid var(--border-subtle)',
+                color: 'var(--text-secondary)',
+                letterSpacing: '0.04em',
+              }}
+            >
+              {fmt}
+            </span>
+          ))}
+          <span
+            style={{
+              fontSize: '0.72rem',
+              fontWeight: 600,
+              padding: '2px 8px',
+              borderRadius: 'var(--radius-xs)',
+              background: 'var(--accent-subtle)',
+              border: '1px solid var(--accent-border)',
+              color: 'var(--accent-primary)',
+            }}
+          >
+            Max {formatBytes(maxBytes)}
+          </span>
+        </div>
         <button
           type="button"
           className="btn btn-secondary btn-sm"
