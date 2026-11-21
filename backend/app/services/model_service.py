@@ -75,6 +75,11 @@ class ModelService:
         self.settings = settings
         self.device: torch.device = _select_device(settings.inference_device)
         self.lock = threading.Lock()
+        if self.device.type == "cpu":
+            try:
+                torch.set_num_threads(1)
+            except Exception:
+                pass
 
         # Load verified Phase 2 configs & class mapping dynamically (zero hardcoding)
         self.dataset_config: Dict[str, Any] = load_dataset_config(settings.dataset_config_path)

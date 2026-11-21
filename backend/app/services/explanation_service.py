@@ -13,6 +13,7 @@ Features:
 
 from __future__ import annotations
 
+import gc
 import logging
 from pathlib import Path
 import sys
@@ -201,7 +202,6 @@ class ExplanationService:
                 activations.clear()
                 gradients.clear()
                 model.zero_grad(set_to_none=True)
-                import gc
                 gc.collect()
 
     def resolve_safe_artifact_path(self, filename: str) -> Optional[Path]:

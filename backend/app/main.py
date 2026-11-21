@@ -16,12 +16,6 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-try:
-    import torch
-    torch.set_num_threads(1)
-except Exception:
-    pass
-
 from .api.routes import health, history, prediction, system
 from .core.config import Settings, get_settings
 from .core.exceptions import register_exception_handlers
