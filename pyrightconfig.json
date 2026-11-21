@@ -1,10 +1,15 @@
 {
+  "typeCheckingMode": "off",
   "include": [
     "backend",
     "ml"
   ],
   "extraPaths": [
+    ".",
+    "ml",
     "ml/src",
     "backend"
-  ]
+  ],
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": false
 }

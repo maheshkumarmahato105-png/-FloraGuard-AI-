@@ -85,10 +85,10 @@ class ModelService:
         self.dataset_config: Dict[str, Any] = load_dataset_config(settings.dataset_config_path)
         self.model_config: Dict[str, Any] = load_model_config(settings.model_config_path)
         self.class_mapping: Dict[str, Any] = load_class_mapping(self.dataset_config)
-        self.class_names: List[str]
-        self.class_names, _ = resolve_verified_classes(
+        class_list, _ = resolve_verified_classes(
             self.model_config, class_mapping_path=settings.class_mapping_path
         )
+        self.class_names: List[str] = list(class_list)
         self.canonical_defs: Dict[str, Dict[str, Any]] = self.class_mapping.get(
             "canonical_classes", {}
         )
