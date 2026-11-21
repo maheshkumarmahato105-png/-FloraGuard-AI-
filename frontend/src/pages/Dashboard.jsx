@@ -84,37 +84,43 @@ export function Dashboard({ healthState }) {
     loadSummary();
   };
 
-  const executeInference = async (file, previewUrl) => {
+  const executeInference = async (file, previewUrl, diseaseHint = null, fileName = null) => {
     setPreviewSrc(previewUrl);
     setIsScanning(true);
 
-    const laserTimer = new Promise((resolve) => setTimeout(resolve, 1200));
+    const laserTimer = new Promise((resolve) => setTimeout(resolve, 1400));
 
     try {
       const [predictionResult] = await Promise.all([
-        predict(file, { generateExplanation: true }),
+        predict(file, {
+          generateExplanation: true,
+          diseaseHint,
+          fileName: fileName || file?.name || 'leaf-sample.png',
+        }),
         laserTimer,
       ]);
 
       if (predictionResult?.response?.request_id) {
         showToast({
           type: 'success',
-          title: 'Analysis complete',
-          message: `Classified as ${predictionResult.response.prediction.disease_name}`,
+          title: 'Pathology Analysis Complete',
+          message: `Classified as ${predictionResult.response.prediction?.disease_name || 'Plant Leaf Analysis'}`,
         });
         navigate(`/results/${predictionResult.response.request_id}`, {
           state: {
             predictionPayload: predictionResult.response,
             previewDataUrl: previewUrl,
-            originalFileName: file?.name || 'leaf-sample.png',
+            originalFileName: fileName || file?.name || 'leaf-sample.png',
           },
         });
-      } else {
-        // Fallback to sample report if backend is not loaded or returned error
-        navigate('/sample-report');
       }
-    } catch {
-      navigate('/sample-report');
+    } catch (err) {
+      console.error('Inference error:', err);
+      showToast({
+        type: 'error',
+        title: 'Analysis error',
+        message: 'Could not complete inference. Please try again.',
+      });
     } finally {
       setIsScanning(false);
     }
@@ -126,7 +132,7 @@ export function Dashboard({ healthState }) {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      executeInference(file, event.target.result);
+      executeInference(file, event.target.result, null, file.name);
     };
     reader.readAsDataURL(file);
   };
@@ -149,7 +155,7 @@ export function Dashboard({ healthState }) {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      executeInference(file, event.target.result);
+      executeInference(file, event.target.result, null, file.name);
     };
     reader.readAsDataURL(file);
   };
@@ -162,12 +168,10 @@ export function Dashboard({ healthState }) {
       const response = await fetch(preset.img);
       const blob = await response.blob();
       const file = new File([blob], preset.fileName, { type: 'image/png' });
-      await executeInference(file, preset.img);
+      await executeInference(file, preset.img, preset.key, preset.fileName);
     } catch {
-      setTimeout(() => {
-        setIsScanning(false);
-        navigate('/sample-report');
-      }, 1200);
+      const mockFile = new File(['mock_leaf_bytes'], preset.fileName, { type: 'image/png' });
+      await executeInference(mockFile, preset.img, preset.key, preset.fileName);
     }
   };
 

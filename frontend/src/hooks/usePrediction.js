@@ -60,67 +60,72 @@ export function usePrediction() {
     setUploadProgress(0);
   }, []);
 
-  const predict = useCallback(async (file, { generateExplanation = false } = {}) => {
-    if (inFlightRef.current) {
-      return null;
-    }
-
-    inFlightRef.current = true;
-    setError(null);
-    setResult(null);
-    setUploadProgress(0);
-    setStage('uploading');
-
-    const controller = new AbortController();
-    abortRef.current = controller;
-
-    try {
-      const previewPromise = readFileAsDataUrl(file);
-      const response = await submitPrediction(file, {
-        generateExplanation,
-        signal: controller.signal,
-        onProgress: (pct) => {
-          setUploadProgress(pct);
-          if (pct >= 100) {
-            setStage('analyzing');
-          }
-        },
-      });
-
-      const previewDataUrl = await previewPromise;
-      const enriched = {
-        response,
-        previewDataUrl,
-        originalFileName: file?.name || 'leaf-image.jpg',
-      };
-
-      if (response?.request_id) {
-        savePredictionCache(response.request_id, enriched);
-      }
-
-      setResult(enriched);
-      setUploadProgress(100);
-      setStage('done');
-      return enriched;
-    } catch (err) {
-      if (err?.errorCode === 'aborted') {
-        setStage('idle');
+  const predict = useCallback(
+    async (file, { generateExplanation = false, diseaseHint = null, fileName = null } = {}) => {
+      if (inFlightRef.current) {
         return null;
       }
-      setError({
-        message: err?.message || 'Prediction failed. Please try again.',
-        status: err?.status || 0,
-        errorCode: err?.errorCode || 'prediction_error',
-        isNetworkError: Boolean(err?.isNetworkError),
-        isTimeout: Boolean(err?.isTimeout),
-      });
-      setStage('error');
-      return null;
-    } finally {
-      inFlightRef.current = false;
-      abortRef.current = null;
-    }
-  }, []);
+
+      inFlightRef.current = true;
+      setError(null);
+      setResult(null);
+      setUploadProgress(0);
+      setStage('uploading');
+
+      const controller = new AbortController();
+      abortRef.current = controller;
+
+      try {
+        const previewPromise = readFileAsDataUrl(file);
+        const response = await submitPrediction(file, {
+          generateExplanation,
+          signal: controller.signal,
+          diseaseHint,
+          fileName,
+          onProgress: (pct) => {
+            setUploadProgress(pct);
+            if (pct >= 100) {
+              setStage('analyzing');
+            }
+          },
+        });
+
+        const previewDataUrl = await previewPromise;
+        const enriched = {
+          response,
+          previewDataUrl,
+          originalFileName: fileName || file?.name || 'leaf-image.jpg',
+        };
+
+        if (response?.request_id) {
+          savePredictionCache(response.request_id, enriched);
+        }
+
+        setResult(enriched);
+        setUploadProgress(100);
+        setStage('done');
+        return enriched;
+      } catch (err) {
+        if (err?.errorCode === 'aborted') {
+          setStage('idle');
+          return null;
+        }
+        setError({
+          message: err?.message || 'Prediction failed. Please try again.',
+          status: err?.status || 0,
+          errorCode: err?.errorCode || 'prediction_error',
+          isNetworkError: Boolean(err?.isNetworkError),
+          isTimeout: Boolean(err?.isTimeout),
+        });
+        setStage('error');
+        return null;
+      } finally {
+        inFlightRef.current = false;
+        abortRef.current = null;
+      }
+    },
+    []
+  );
 
   return {
     stage,

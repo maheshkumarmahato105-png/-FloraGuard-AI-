@@ -68,7 +68,10 @@ export function Detection({ healthState }) {
   const handleAnalyze = async () => {
     if (!selectedFile || isSubmitting) return;
 
-    const enriched = await predict(selectedFile, { generateExplanation });
+    const enriched = await predict(selectedFile, {
+      generateExplanation,
+      fileName: selectedFile.name,
+    });
     if (!enriched?.response?.request_id) {
       return;
     }
@@ -79,7 +82,7 @@ export function Detection({ healthState }) {
       title: isUncertain ? 'Uncertain prediction returned' : 'Analysis complete',
       message: isUncertain
         ? 'The model rejected this sample due to uncertainty thresholds.'
-        : 'Redirecting to detailed prediction and explainability results.',
+        : `Classified as ${enriched.response.prediction?.disease_name || 'Plant Leaf Analysis'}`,
     });
 
     navigate(`/results/${encodeURIComponent(enriched.response.request_id)}`, {

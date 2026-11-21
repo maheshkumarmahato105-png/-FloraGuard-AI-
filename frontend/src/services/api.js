@@ -56,7 +56,7 @@ export class ApiError extends Error {
 
 export function resolveApiUrl(path) {
   if (!path) return '';
-  if (/^https?:\/\//i.test(path)) return path;
+  if (/^(https?|data|blob):/i.test(path)) return path;
   const normalized = path.startsWith('/') ? path : `/${path}`;
   return `${getApiBaseUrl()}${normalized}`;
 }
