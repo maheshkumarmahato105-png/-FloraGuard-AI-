@@ -1,10 +1,15 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FileText, History as HistoryIcon, Moon, RefreshCw, Settings as SettingsIcon, Sun } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import StatusIndicator from '../common/StatusIndicator';
 
 export function Navbar({ health, loading, onRefreshHealth }) {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  if (location.pathname.startsWith('/results') || location.pathname === '/sample-report') {
+    return null;
+  }
 
   const statusTone = loading
     ? 'neutral'

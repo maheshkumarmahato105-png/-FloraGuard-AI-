@@ -1,7 +1,12 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { NAV_ITEMS } from './Sidebar';
 
 export function MobileNavigation() {
+  const location = useLocation();
+
+  if (location.pathname.startsWith('/results') || location.pathname === '/sample-report') {
+    return null;
+  }
   return (
     <nav className="mobile-nav" aria-label="Mobile bottom navigation">
       <ul className="mobile-nav-list">
