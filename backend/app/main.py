@@ -185,7 +185,7 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
                 "system_info": f"{prefix}/system/info",
                 "swagger_docs": "/docs",
             },
-            "frontend_url": "https://floraguard-ai.vercel.app",
+            "frontend_url": "https://flora-guard-ai-eight.vercel.app",
         }
 
     @app.get("/favicon.ico", include_in_schema=False)
