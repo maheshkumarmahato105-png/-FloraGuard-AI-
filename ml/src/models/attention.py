@@ -34,7 +34,7 @@ class SqueezeExcitation(nn.Module):
         self.squeeze = nn.AdaptiveAvgPool2d(1)
         self.excitation = nn.Sequential(
             nn.Conv2d(channels, hidden_channels, kernel_size=1, bias=True),
-            nn.ReLU(inplace=True),
+            nn.ReLU(inplace=False),
             nn.Conv2d(hidden_channels, channels, kernel_size=1, bias=True),
             nn.Sigmoid(),
         )

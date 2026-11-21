@@ -21,7 +21,7 @@ export function Detection({ healthState }) {
   const [inputMode, setInputMode] = useState(initialMode);
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileSource, setFileSource] = useState('upload');
-  const [generateExplanation, setGenerateExplanation] = useState(true);
+  const [generateExplanation, setGenerateExplanation] = useState(false);
 
   const {
     stage,

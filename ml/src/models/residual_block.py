@@ -14,13 +14,13 @@ def make_activation(name: str = "relu") -> nn.Module:
     """Create an activation module by configuration name."""
     key = name.strip().lower()
     if key == "relu":
-        return nn.ReLU(inplace=True)
+        return nn.ReLU(inplace=False)
     if key == "silu":
-        return nn.SiLU(inplace=True)
+        return nn.SiLU(inplace=False)
     if key == "gelu":
         return nn.GELU()
     if key == "leaky_relu":
-        return nn.LeakyReLU(negative_slope=0.1, inplace=True)
+        return nn.LeakyReLU(negative_slope=0.1, inplace=False)
     raise ValueError(
         f"Unsupported activation '{name}'. Supported: relu, silu, gelu, leaky_relu."
     )

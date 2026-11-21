@@ -198,7 +198,11 @@ class ExplanationService:
             finally:
                 fwd_handle.remove()
                 bwd_handle.remove()
+                activations.clear()
+                gradients.clear()
                 model.zero_grad(set_to_none=True)
+                import gc
+                gc.collect()
 
     def resolve_safe_artifact_path(self, filename: str) -> Optional[Path]:
         """Resolve an explanation filename strictly inside `settings.results_dir` (blocks traversal)."""

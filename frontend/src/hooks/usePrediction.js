@@ -60,7 +60,7 @@ export function usePrediction() {
     setUploadProgress(0);
   }, []);
 
-  const predict = useCallback(async (file, { generateExplanation = true } = {}) => {
+  const predict = useCallback(async (file, { generateExplanation = false } = {}) => {
     if (inFlightRef.current) {
       return null;
     }
