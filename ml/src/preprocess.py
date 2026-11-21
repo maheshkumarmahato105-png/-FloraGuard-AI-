@@ -32,7 +32,11 @@ from typing import Any, Dict, Tuple
 from PIL import Image, ImageOps
 import torch
 from torchvision import transforms
-from tqdm import tqdm
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(iterable, *args, **kwargs):
+        return iterable
 import pandas as pd
 
 SRC_DIR = Path(__file__).resolve().parent

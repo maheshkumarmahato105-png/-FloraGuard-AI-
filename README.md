@@ -110,3 +110,22 @@ python ml/src/evaluation/evaluate.py
 $env:PYTHONDONTWRITEBYTECODE = "1"
 pytest ml/tests -p no:cacheprovider -v
 ```
+
+
+### How to Run Locally
+
+#### 1. Start the Backend API (Port 8001)
+```powershell
+cd "C:\Users\Mahesh Kumar Mahato\Desktop\Plant Disease Detection"
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8001
+```
+- API Health: [http://127.0.0.1:8001/api/v1/health](http://127.0.0.1:8001/api/v1/health)
+- Swagger Docs: [http://127.0.0.1:8001/docs](http://127.0.0.1:8001/docs)
+
+#### 2. Start the React Frontend (Port 5173)
+```powershell
+cd "C:\Users\Mahesh Kumar Mahato\Desktop\Plant Disease Detection\frontend"
+npm run dev
+```
+- Web Application: [http://127.0.0.1:5173](http://127.0.0.1:5173)
