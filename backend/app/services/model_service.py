@@ -122,11 +122,8 @@ class ModelService:
                                     outfile.write(infile.read())
                         logger.info("Model checkpoint successfully reassembled at %s", ckpt_path)
 
-            if not ckpt_path.exists():
-                download_url = os.getenv(
-                    "MODEL_DOWNLOAD_URL",
-                    "https://github.com/maheshkumarmahato105-png/-FloraGuard-AI-/releases/download/v1.0.0/best_model.pth",
-                )
+            if not ckpt_path.exists() and not os.getenv("PYTEST_CURRENT_TEST") and not os.getenv("TESTING"):
+                download_url = os.getenv("MODEL_DOWNLOAD_URL")
                 if download_url:
                     logger.info("Checking for model checkpoint download from %s...", download_url)
                     ckpt_path.parent.mkdir(parents=True, exist_ok=True)

@@ -130,7 +130,19 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
     async def request_context_and_rate_limit_middleware(request: Request, call_next):
         request_id = request.headers.get("X-Request-ID") or uuid.uuid4().hex
         request.state.request_id = request_id
-        client_ip = request.client.host if request.client else "unknown"
+
+        # Robust client IP extraction behind reverse proxies (Cloudflare, Render, Vercel)
+        cf_ip = request.headers.get("CF-Connecting-IP")
+        xfwd = request.headers.get("X-Forwarded-For")
+        xreal = request.headers.get("X-Real-IP")
+        if cf_ip:
+            client_ip = cf_ip.strip()
+        elif xfwd:
+            client_ip = xfwd.split(",")[0].strip()
+        elif xreal:
+            client_ip = xreal.strip()
+        else:
+            client_ip = request.client.host if request.client else "unknown"
 
         # Apply rate limit to prediction endpoint
         if request.url.path.endswith("/predict") and not rate_limiter.allow(client_ip):
@@ -149,6 +161,13 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
         response = await call_next(request)
         latency_ms = round((time.perf_counter() - t0) * 1000.0, 2)
         response.headers["X-Request-ID"] = request_id
+
+        # Defense-in-depth HTTP security headers
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "SAMEORIGIN"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Permissions-Policy"] = "camera=*, microphone=(), geolocation=()"
 
         logger.info(
             f"{request.method} {request.url.path} -> {response.status_code}",

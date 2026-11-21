@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { ToastProvider } from './context/ToastContext';
 import { useBackendHealth } from './hooks/useBackendHealth';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import Sidebar from './components/layout/Sidebar';
 import Navbar from './components/layout/Navbar';
 import MobileNavigation from './components/layout/MobileNavigation';
@@ -57,13 +58,15 @@ export function AppShell() {
 
 export function App() {
   return (
-    <ThemeProvider>
-      <ToastProvider>
-        <BrowserRouter>
-          <AppShell />
-        </BrowserRouter>
-      </ToastProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <ToastProvider>
+          <BrowserRouter>
+            <AppShell />
+          </BrowserRouter>
+        </ToastProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
