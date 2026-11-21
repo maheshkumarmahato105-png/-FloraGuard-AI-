@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import {
+  FileText,
   History as HistoryIcon,
   LayoutDashboard,
   Leaf,
@@ -11,6 +12,7 @@ import StatusIndicator from '../common/StatusIndicator';
 export const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/detection', label: 'Detection', icon: ScanSearch, end: false },
+  { to: '/sample-report', label: 'Report', icon: FileText, end: false },
   { to: '/history', label: 'History', icon: HistoryIcon, end: false },
   { to: '/settings', label: 'Settings', icon: SettingsIcon, end: false },
 ];

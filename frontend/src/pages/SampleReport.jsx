@@ -127,7 +127,7 @@ export function SampleReport() {
           </section>
 
           {/* 5. Observed Symptoms & Severity Gauge */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
+          <div className="report-symptoms-severity-grid">
             <section className="report-section" style={{ margin: 0 }}>
               <h3 className="section-heading">Observed Pathology Symptoms</h3>
               <ul style={{ margin: '8px 0 0 18px', padding: 0, fontSize: 12.5, color: '#334155', lineHeight: 1.6 }}>
@@ -159,7 +159,7 @@ export function SampleReport() {
           {/* 6. Agronomic Care & Treatment Guidance */}
           <section className="report-section">
             <h3 className="section-heading">Recommended Agronomic Management</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+            <div className="report-management-grid">
               <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 8, padding: 12, fontSize: 12, color: '#334155' }}>
                 <strong style={{ color: '#064e3b', display: 'block', marginBottom: 6 }}>1. Cultural Sanitation</strong>
                 Prune and burn or bag infected lower leaves. Maintain 24-inch row spacing to facilitate air circulation and rapid canopy drying.
